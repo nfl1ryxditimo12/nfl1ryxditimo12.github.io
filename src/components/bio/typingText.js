@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const TypingText = ({ author }) => {
   const txt1 = '안녕하세요.';
-  const txt2 = '사람에 가치를 두는';
+  const txt2 = '효율적으로 행동하는';
   const txt3 = '개발자';
   const txt4 = '입니다.';
   const [Text1, setText1] = useState('');
