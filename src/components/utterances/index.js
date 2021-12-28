@@ -19,7 +19,7 @@ function Utterances({ repo, path }) {
       theme: JSON.parse(storedIsDarkMode) ? 'photon-dark' : 'github-light',
       label: 'comment',
       async: true,
-      'issue-term': 'pathname',
+      'issue-term': 'title',
       crossorigin: 'anonymous',
     };
 

@@ -2,14 +2,14 @@ module.exports = {
   title: `seongsu.me`,
   description: `Seongsu's Blog`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: `https://www.seongsu.me`,
+  siteUrl: `https://seongsu.me`,
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: `nfl1ryxditimo12/nfl1ryxditimo12.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
-  ga: '0', // Google Analytics Tracking ID
+  ga: 'G-MHYY2H7B9N', // Google Analytics Tracking ID
   author: {
     name: `김성수`,
     bio: {
@@ -19,7 +19,7 @@ module.exports = {
     },
     social: {
       github: `https://github.com/nfl1ryxditimo12`, // `https://github.com/zoomKoding`,
-      linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
+      linkedIn: `https://www.linkedin.com/in/%EC%84%B1%EC%88%98-%EA%B9%80-605b36229/`, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
       email: `nfl1ryxditimo12@gmail.com`, // `zoomkoding@gmail.com`,
     },
   },
@@ -52,6 +52,17 @@ module.exports = {
       //     demo: 'https://www.zoomkoding.com',
       //   },
       // },
+      {
+        date: '2021.05 ~',
+        activity: '42 Seoul 본과정',
+        links: {
+          github: 'https://github.com/innovationacademy-kr',
+          post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
+        },
+      },
     ],
 
     projects: [
