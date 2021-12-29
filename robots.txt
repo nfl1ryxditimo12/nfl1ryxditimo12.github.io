@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://seongsu.me/sitemap/sitemap-index.xml
+Host: https://seongsu.me
