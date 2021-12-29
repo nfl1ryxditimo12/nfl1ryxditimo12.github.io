@@ -11,18 +11,12 @@ categories: Node.js Express
 
 <br/>
 
+## 🧢 Typescript
+
 `Javescript`를 사용하며 프로젝트를 진행했을 때 규모가 커질 수록 클래스 기반 객체지향 언어 `Java`, `C++`, `C#` 등에 익숙한 개발자에게 혼란을 야기할 수 있다.<br/>
 이유는 단지 `Javascript`가 동적 타입 언어이기 때문이며 이의 문제를 극복하고자 정적 타입 언어인 `Typescript`를 도입하게 되었다.<br/>
 
 > 애초에 언어가 잘 정제되기 전에 서두른 출시와 웹페이지의 보조적인 기능을 수행하던 `Javascript`의 태생적 한계이기도 하다.
-
-<br/>
-
----
-
-<br/>
-
-## 🧢 Typescript
 
 <br/>
 
@@ -37,9 +31,6 @@ categories: Node.js Express
 이후 `ECMAScript`의 업그레이드에 따른 새로운 기능을 지속적으로 추가할 예정이여서 매년 업그레이드될 `ECMAScript`의 표준을 따라갈 수 있는 좋은 수단이 될 것이다.
 
 <br/>
-
----
-
 <br/>
 
 ## ⚙️ Setting
@@ -106,9 +97,6 @@ $ yarn add --dev nodemon ts-node
 이제 `Express`서버를 세팅한 후 `npm start` 또는 `yarn start`를 하면 바로 `Typescript`로 실행되는 프로젝트 설정이 끝이다..!
 
 <br/>
-
----
-
 <br/>
 
 ## 💭 Typescript 컴파일 옵션
@@ -197,9 +185,6 @@ $ yarn add --dev nodemon ts-node
 </details>
 
 <br/>
-
----
-
 <br/>
 
 ## 📚 참고 자료

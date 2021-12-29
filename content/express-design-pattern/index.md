@@ -1,7 +1,7 @@
 ---
 emoji: 1️⃣
 title: Express 디자인 패턴
-date: '2021-12-17 18:52:00'
+date: '2021-12-27 18:52:00'
 author: seongsu
 tags: Node.js Express
 categories: Node.js Express
@@ -16,9 +16,6 @@ categories: Node.js Express
 이번에 프로젝트를 진행하며 배우게 된 `Express`설계를 포스팅 해보려 한다.
 
 <br/>
-
----
-
 <br/>
 
 ## 🚀 Express.js 프레임워크
@@ -30,9 +27,6 @@ categories: Node.js Express
 - 많은 Method 및 Middleware를 통해 쉬운 API 작성
 
 <br/>
-
----
-
 <br/>
 
 ## 🌀 MVC 패턴
@@ -63,9 +57,6 @@ categories: Node.js Express
 > `View` 요청 -> `Model` 연산 -> 가공된 데이터 -> `View` 응답
 
 <br/>
-
----
-
 <br/>
 
 ## 🎨 디자인 패턴
@@ -106,9 +97,6 @@ categories: Node.js Express
 그뒤 `services`에서 비즈니스 로직을 담당하며 데이터를 가공해서 `controllers`에 반환해준다.<br/>
 
 <br/>
-
----
-
 <br/>
 
 ## 🚧 절대 경로 / 상대경로
@@ -142,9 +130,6 @@ categories: Node.js Express
 ![path.png](./path.png)
 
 <br/>
-
----
-
 <br/>
 
 ## 📚 참고 자료
