@@ -2,7 +2,7 @@ module.exports = {
   title: `seongsu.me`,
   description: `Seongsu's Blog`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: `https://seongsu.me`,
+  siteUrl: `https://seongsu.me/`,
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
@@ -47,7 +47,19 @@ module.exports = {
         activity: '42 Seoul 본과정',
         links: {
           github: 'https://github.com/innovationacademy-kr',
-          post: '',
+          post: 'https://seongsu.me/goodbye-2021/#-born2code',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
+        },
+      },
+      {
+        date: '2021.11 ~',
+        activity: '반찬 구독 플랫폼 개발',
+        links: {
+          github: '',
+          post:
+            'https://seongsu.me/goodbye-2021/#-%EC%A7%84%ED%96%89%EC%A4%91%EC%9D%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8',
           googlePlay: '',
           appStore: '',
           demo: '',
