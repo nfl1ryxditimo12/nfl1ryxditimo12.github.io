@@ -273,15 +273,23 @@
 <span class="token comment">// DB에서 PK값 기준 기존 이벤트를 가져온 후 새로운 이벤트와 PK 비교한다.</span>
 <span class="token comment">// 새로운 이벤트들은 배열에 담아 반환해준다.</span>
 
-<span class="token keyword">const</span> <span class="token function-variable function">examCursusValid</span> <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> eventType<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-
-    <span class="token comment">// 테스트용 알림인지 확인하는 함수</span>
+<span class="token keyword">const</span> <span class="token function-variable function">cursusValid</span> <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> eventType<span class="token punctuation">,</span> flag<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// 테스트 목적으로 등록한 이벤트인지 확인하는 함수</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">===</span> <span class="token string">"event"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            event<span class="token punctuation">[</span><span class="token string">"cursus_ids"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">21</span> <span class="token operator">&amp;&amp;</span>
+            event<span class="token punctuation">[</span><span class="token string">"campus_ids"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">29</span> <span class="token operator">&amp;&amp;</span>
+            event<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span>
+            event<span class="token punctuation">.</span>description<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span>
+            event<span class="token punctuation">.</span>location<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token keyword">return</span> event<span class="token punctuation">.</span>cursus<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>slug <span class="token operator">===</span> <span class="token string">"42cursus"</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>location<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">isNewEvent</span> <span class="token operator">=</span> <span class="token punctuation">(</span>recentEvent<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>eventType<span class="token operator">></span><span class="token punctuation">,</span> nowEvent<span class="token operator">:</span> Events <span class="token operator">|</span> Exams<span class="token punctuation">,</span> flag<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> recentEvent<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>flag <span class="token operator">!==</span> <span class="token string">"event"</span> <span class="token operator">?</span> <span class="token function">examCursusValid</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>id <span class="token operator">></span> nowEvent<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> recentEvent<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">cursusValid</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> flag<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>id <span class="token operator">></span> nowEvent<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">newEvent</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>data<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>eventType<span class="token operator">></span><span class="token punctuation">,</span> flag<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -400,6 +408,14 @@
 <blockquote>
 <p>2022년 1월 1일 기념으로 리팩토링을 완료했다</p>
 </blockquote>
+<div class="gatsby-highlight" data-language="plain"><pre class="language-plain"><code class="language-plain"># 다음은 TS로 리팩토링을 하며 수정한 내용이다
+
+- 42 OAuth Token 조건부 발급 오류 처리
+- 핵심 로직 비동기 처리
+- 중복 코드 모듈화
+- 파일명 명시적으로 변경
+- ORM 변경 Sequelize -> Typeorm
+- import 절대경로 지정</code></pre></div>
 <br/>
 <p><span
       class="gatsby-resp-image-wrapper"
