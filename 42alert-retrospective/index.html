@@ -232,8 +232,6 @@
 </ul>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> env <span class="token keyword">from</span> <span class="token string">"@modules/env"</span><span class="token punctuation">;</span>
 
-<span class="token comment">// eventToken에 42 Authorization Token이 담긴다.</span>
-
 <span class="token keyword">const</span> eventToken <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
          method<span class="token operator">:</span> <span class="token string">"post"</span><span class="token punctuation">,</span>
         url<span class="token operator">:</span> env<span class="token punctuation">.</span>ftConfig<span class="token punctuation">.</span>apiUrl <span class="token operator">+</span> <span class="token string">"/oauth/token"</span><span class="token punctuation">,</span>
@@ -247,12 +245,12 @@
 <p>인트라넷에서 미리 API 사용 등록을 하여 <code class="language-text">UID</code>와 <code class="language-text">SECRET KEY</code>를 발급받자</p>
 </blockquote>
 <br/>
+<p><code class="language-text">eventToken</code>에 <code class="language-text">42 Authorization Token</code>이 담긴다.<br/></p>
+<br/>
 <ul>
 <li>Event API 호출</li>
 </ul>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> env <span class="token keyword">from</span> <span class="token string">"@modules/env"</span><span class="token punctuation">;</span>
-
-<span class="token comment">// axios 호출이 완료되면 checkData 함수에서 DB 검증을 통해 새로운 이벤트인 경우 저장 후 슬랙에 전송해준다.</span>
 
 <span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         method<span class="token operator">:</span> <span class="token string">"get"</span><span class="token punctuation">,</span>
@@ -265,13 +263,12 @@
             <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"\x1b[31m[Event] - 42 API 호출에 실패하였습니다.\x1b[m"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <br/>
+<p>axios 호출이 완료되면 <code class="language-text">checkData</code> 함수에서 DB 검증을 통해 새로운 이벤트인 경우 저장 후 슬랙에 전송해준다.<br/></p>
+<br/>
 <ul>
 <li>최신 이벤트인지 비교</li>
 </ul>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> eventType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"eventType"</span><span class="token punctuation">;</span>
-
-<span class="token comment">// DB에서 PK값 기준 기존 이벤트를 가져온 후 새로운 이벤트와 PK 비교한다.</span>
-<span class="token comment">// 새로운 이벤트들은 배열에 담아 반환해준다.</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">cursusValid</span> <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> eventType<span class="token punctuation">,</span> flag<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// 테스트 목적으로 등록한 이벤트인지 확인하는 함수</span>
@@ -303,6 +300,9 @@
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> newEvent<span class="token punctuation">;</span></code></pre></div>
 <br/>
+<p>DB에서 PK값 기준 기존 이벤트를 가져온 후 새로운 이벤트와 PK 비교한다.<br/>
+새로운 이벤트들은 배열에 담아 반환해준다.<br/></p>
+<br/>
 <ul>
 <li>최신 이벤트 Slack 전송</li>
 </ul>
@@ -310,9 +310,6 @@
 <span class="token keyword">import</span> content <span class="token keyword">from</span> <span class="token string">"@modules/content"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> env <span class="token keyword">from</span> <span class="token string">"@modules/env"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> eventType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"eventType"</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 사실 슬랙으로 전송하는 로직은 간단하다.</span>
-<span class="token comment">// 나중에 슬랙 API 사용법 포스팅을 해야것다</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">slack</span> <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> eventType<span class="token punctuation">,</span> flag<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> web <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebClient</span><span class="token punctuation">(</span>env<span class="token punctuation">.</span>slackConfig<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -328,6 +325,9 @@
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> slack<span class="token punctuation">;</span></code></pre></div>
+<br/>
+<p>사실 슬랙으로 전송하는 로직은 간단하다.<br/>
+나중에 슬랙 API 사용법 포스팅을 해야것다<br/></p>
 <br/>
 <br/>
 <h2 id="-완성된-모습" style="position:relative;"><a href="#-%EC%99%84%EC%84%B1%EB%90%9C-%EB%AA%A8%EC%8A%B5" aria-label=" 완성된 모습 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>📨 완성된 모습</h2>

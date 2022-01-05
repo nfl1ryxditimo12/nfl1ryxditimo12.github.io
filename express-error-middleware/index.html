@@ -182,9 +182,9 @@
 <p><code class="language-text">Express</code>로 개발을 하다 <strong><code class="language-text">만약 실 서비스에서 생각지 못한 오류로 서버가 종료되면 어떡하지?</code></strong> 라는 생각이 들었던 적 있을것 이다.<br/></p>
 <br/>
 <p>이런 걱정을 할 수 밖에 없는 이유가 <code class="language-text">Node.js</code> 자체가 단일 스레드 플랫폼이다 보니 오류가 날 경우 서비스가 그대로 죽어버리는 문제가 있다.<br/>
-그렇다고 모든 오류에 관해 <code class="language-text">try ... catch</code>문으로 막거나 단위/통합 테스트를 빡세게 가져가기 여려울 수 밖에 없기 때문이다.<br/></p>
+그렇다고 모든 오류에 관해 <code class="language-text">try ... catch</code>문으로 막으면 코드가 보기 좋지 않을 뿐더러 단위/통합 테스트를 빡세게 한다해도 한계가 있기 때문이다.<br/></p>
 <blockquote>
-<p>사실 Node.js는 시스템적으로 non-blocking I/O를 지원하지 않는 호출이 있는 경우, 이를 비동기 처리 하기 위해 내부의 Thread pool(libio)을 별도로 이용해 처리한다고 해 정확히 말하면 싱글 스레드는 아니다.</p>
+<p>사실 Node.js는 시스템적으로 non-blocking I/O를 지원하지 않는 호출이 있는 경우, 이를 비동기 처리 하기 위해 내부의 Thread pool(libio)을 별도로 이용해 처리한다고 해서 정확히 말하면 싱글 스레드는 아니다.</p>
 </blockquote>
 <br/>
 <h3 id="-그래서-어떻게-해야하나" style="position:relative;"><a href="#-%EA%B7%B8%EB%9E%98%EC%84%9C-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EC%95%BC%ED%95%98%EB%82%98" aria-label=" 그래서 어떻게 해야하나 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>❓ 그래서 어떻게 해야하나</h3>
@@ -231,7 +231,6 @@
     <span class="token punctuation">}</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">===</span> httpStatus<span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">slack</span><span class="token punctuation">(</span><span class="token punctuation">{</span> log<span class="token operator">:</span> logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span><span class="token punctuation">,</span> statusCode<span class="token punctuation">,</span> stack<span class="token punctuation">,</span> message <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
         logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -320,7 +319,7 @@ router<span class="token punctuation">.</span><span class="token function">get</
 <p>그때 일반적인 상황에서 따로 <code class="language-text">try ... catch</code>같은 에러 핸들링을 해주지 않았다면 서버는 즉시 종료 될 것이다.<br/>
 하지만 현재 <code class="language-text">Error Middleware</code>를 적용한 경우 <code class="language-text">Error</code>객체가 <code class="language-text">throw</code>된다 해도 서버가 종료되지 않고 다음 미들웨어로 넘어가 오류가 응답되기 때문에 예상치 못한 오류라도 걱정하지 않고 코드를 짤 수 있게 된다.<br/></p>
 <br/>
-<p>이런 방식으로 모든 <code class="language-text">controller</code>단에서 미들웨어를 놔준다면 심각한 오류를 막을 수 있고 유지보수에도 도움이 많이 된다.<br/></p>
+<p>이런 방식으로 <code class="language-text">controller</code>단에 미들웨어를 놔준다면 심각한 오류를 막을 수 있고 유지보수에도 도움이 많이 된다.<br/></p>
 <div class="table-of-contents">
 <ul>
 <li>
