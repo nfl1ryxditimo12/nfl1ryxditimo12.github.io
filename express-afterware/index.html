@@ -141,7 +141,7 @@
 <br/>
 <h2 id="-사용하는-이유" style="position:relative;"><a href="#-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0" aria-label=" 사용하는 이유 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🎓 사용하는 이유</h2>
 <br/>
-<p>현재 모든 데이터 요청마다 JWT를 받아와 검증을 진행하는데 만약 Access Token 이 만료되었다면 <code class="language-text">데이터 요청(Token 만료)</code> -> <code class="language-text">JWT 재발급</code> -> <code class="language-text">데이터 요청</code> 처럼 총 3번의 API 요청이 있게 된다.<br/>
+<p>현재 모든 데이터 요청마다 Access, Refresh Token을 받아와 검증을 진행하는데 만약 Access Token 이 만료되었다면 <code class="language-text">데이터 요청(Token 만료)</code> -> <code class="language-text">Access Token 재발급</code> -> <code class="language-text">데이터 요청</code> 처럼 총 3번의 API 요청이 있게 된다.<br/>
 이렇게 요청의 횟수가 늘어나면 그만큼 리소스 소모가 심해져 성능상 문제가 생길 수 있다.<br/></p>
 <br/>
 <p>이런 형식에서 탈피하고자 원래는 데이터 요청에 Access Token이 만료 되었다면 <code class="language-text">Service</code>단이 끝날 때 Access Token을 재발행 해 응답값에 같이 넣어주는 로직을 짜려했는데, 모든 함수마다 다 추가를 해야했다.<br/>
@@ -160,7 +160,7 @@
 <br/>
 <h3 id="-단점" style="position:relative;"><a href="#-%EB%8B%A8%EC%A0%90" aria-label=" 단점 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>👎 단점</h3>
 <ul>
-<li>아무 레퍼런스가 없어 직접 구현해야한다.</li>
+<li>아무 레퍼런스가 없어 직접 구현해야한다. (진짜 하나도 없고 개념도 생소하다)</li>
 <li>아무래도 틀이 정해져 있다 보니 한정적으로 사용할 수 밖에 없다.</li>
 <li>개발하면서 이게 맞나? 싶다</li>
 </ul>
