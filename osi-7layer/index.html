@@ -82,366 +82,215 @@
         }
       }
     })
-  </script><title data-react-helmet="true">쉽고 간단한 Slack Bot 만들기</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="쉽고 간단한 Slack Bot 만들기"/><meta data-react-helmet="true" property="og:site_title" content="쉽고 간단한 Slack Bot 만들기"/><meta data-react-helmet="true" name="description" content="를 이용하면 슬랙의 특정 채널에 자동으로 글을 올리거나, 올라온 글을 받아 오는 Bot을 만들 수 있다. 먼저,  페이지에서 App을 만들고 권한 설정 작업을 시작해야 한다.
-App 생성 및 권한 설정이 완료되었다면 Slack에 해당 App을 설치하고, 글을 등록할 채널에 생성할 App을 추가해 준다. 이후 Node.js 또는 여러 Api 서버로 글을 등록 할 수 있다.
-특정 주기마다 자동으로 글을 올리고 싶다면 각 언어, 프레임 워크 별 전용 모듈을 활용하면 된다! 🤖 Slack Bot 생성  먼저, https://api.slack.com 에 접속해 준다. 사이트에 접속 했다면 왼쪽 아래에  버튼을 눌러준다.  밑의 From an app manifest는 신경쓰지 말자 그럼 이렇게 창이 뜨는데 위의 를 클릭하자!  워크스페이스가 없다면 여기로! 봇 이름을 입력해 주고 밑에 어느 워크스페이스에 생성할 지 정해준다.
-그러면 밑의 이 활성화 되는데 눌러주자!  슬랙 봇을 전반적으로 설…"/><meta data-react-helmet="true" property="og:description" content="를 이용하면 슬랙의 특정 채널에 자동으로 글을 올리거나, 올라온 글을 받아 오는 Bot을 만들 수 있다. 먼저,  페이지에서 App을 만들고 권한 설정 작업을 시작해야 한다.
-App 생성 및 권한 설정이 완료되었다면 Slack에 해당 App을 설치하고, 글을 등록할 채널에 생성할 App을 추가해 준다. 이후 Node.js 또는 여러 Api 서버로 글을 등록 할 수 있다.
-특정 주기마다 자동으로 글을 올리고 싶다면 각 언어, 프레임 워크 별 전용 모듈을 활용하면 된다! 🤖 Slack Bot 생성  먼저, https://api.slack.com 에 접속해 준다. 사이트에 접속 했다면 왼쪽 아래에  버튼을 눌러준다.  밑의 From an app manifest는 신경쓰지 말자 그럼 이렇게 창이 뜨는데 위의 를 클릭하자!  워크스페이스가 없다면 여기로! 봇 이름을 입력해 주고 밑에 어느 워크스페이스에 생성할 지 정해준다.
-그러면 밑의 이 활성화 되는데 눌러주자!  슬랙 봇을 전반적으로 설…"/><meta data-react-helmet="true" property="og:author" content="김성수"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-43ff2f47c9c351c0df7a.js"/><link as="script" rel="preload" href="/framework-0ca52d9912f86fd0bfc4.js"/><link as="script" rel="preload" href="/app-911ec9c16aea38400af5.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-f19d97e82fbe55159237.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-433bdb880ac74c211239.js"/><link as="fetch" rel="preload" href="/page-data/slack-bot/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">seongsu.me</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">6️⃣</div><div class="info"><div class="categories"><a class="category" href="/posts/기타">기타</a></div></div><h1 class="title">쉽고 간단한 Slack Bot 만들기</h1><div class="info"><div class="author">posted by <strong>seongsu</strong>,</div> <!-- -->January 03, 2022</div></header><div class="post-content"><div class="markdown"><p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 24.444444444444443%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA+0lEQVQY05WQv06DcBSFeaP6OPVPog7Fh3DupJN9AYuLQ8WJlhRcTCo2GnGSNCgEE4GmlIWBWOD3GUisjXHxG+69yzn33CsJagSrogBR8U1ZlvxGCMFfVNWPTqrNXgs4nrko3gP5Z8F7EKBcKEzuJriuSxiGmKZJv39OnudkWUYURcznMXEcs0yX62VSXW6HT1wrl4wfu7wFL8idI3b3djg43Ke93UaWO/R6Z7S2Wti2je/72M825o2J4zhMp/frCxrDavbB4uQUFgarPEdVVUajIbquM7gaYBjjRqxpGp7nkaZp0y3LasyTJNlIKAT1WCGo+B+bv6sN64RfjVxpHTpdz60AAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack_api.png"
-        title="slack_api.png"
-        src="/static/44d3f86e4c5ad7b41d7f00f4edfd1b34/37523/slack_api.png"
-        srcset="/static/44d3f86e4c5ad7b41d7f00f4edfd1b34/e9ff0/slack_api.png 180w,
-/static/44d3f86e4c5ad7b41d7f00f4edfd1b34/f21e7/slack_api.png 360w,
-/static/44d3f86e4c5ad7b41d7f00f4edfd1b34/37523/slack_api.png 720w,
-/static/44d3f86e4c5ad7b41d7f00f4edfd1b34/1d69c/slack_api.png 750w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<br/>
-<p><code class="language-text">Slack Api</code>를 이용하면 슬랙의 특정 채널에 자동으로 글을 올리거나, 올라온 글을 받아 오는 Bot을 만들 수 있다. 먼저, <code class="language-text">Slack Api</code> 페이지에서 App을 만들고 권한 설정 작업을 시작해야 한다.<br/>
-App 생성 및 권한 설정이 완료되었다면 Slack에 해당 App을 설치하고, 글을 등록할 채널에 생성할 App을 추가해 준다. 이후 Node.js 또는 여러 Api 서버로 글을 등록 할 수 있다.<br/>
-특정 주기마다 자동으로 글을 올리고 싶다면 각 언어, 프레임 워크 별 전용 <code class="language-text">Scheduler</code>모듈을 활용하면 된다!<br/></p>
-<br/>
-<br/>
-<h2 id="-slack-bot-생성" style="position:relative;"><a href="#-slack-bot-%EC%83%9D%EC%84%B1" aria-label=" slack bot 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🤖 Slack Bot 생성</h2>
-<br/>
+  </script><title data-react-helmet="true">OSI 7계층 &amp; TCP 4계층</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="OSI 7계층 &amp; TCP 4계층"/><meta data-react-helmet="true" property="og:site_title" content="OSI 7계층 &amp; TCP 4계층"/><meta data-react-helmet="true" name="description" content="🎢 OSI 7계층 Open Systems Interconnection OSI 7계층이란 네트워크에서 통신이 일어나는 과정을 7단계로 나눈 것을 말한다.
+각 계층을 분리함으로서 독립적인 역할을 할 수 있다.
+추가로 역할을 분리되면서 문제 발생 시 어느 계층에서 문제가 발생하는지 파악이 가능해진다. 🚏 목적 OSI 7계층은 프로토콜을 기능별로 나눈 것이다.
+각 계층은 하위 계층의 기능만을 이용하고, 상위 계층에게 기능을 제공한다.
+은 이러한 계층들로 구성되는 프로토콜 시스템이 구현된 시스템을 가리키며,
+이것은 하드웨어나 소프트웨어 혹은 둘의 혼합으로 구현될 수 있다.
+일반적으로 하위 계층들은 하드웨어로, 상위 계층들은 소프트웨어로 구현된다. 🪜 계층 기능 1️⃣ 물리 계층 (Physical Layer) OSI 모델 맨 밑의 계층으로서, 네트워크 데이터가 전송되는 물리적인 매체이다.
+디지털에서 아날로그로 변환되며 또는 그 반대의 신호로 변환되어 물리적인 전송이 가능하게 한다.
+또한 주소 개…"/><meta data-react-helmet="true" property="og:description" content="🎢 OSI 7계층 Open Systems Interconnection OSI 7계층이란 네트워크에서 통신이 일어나는 과정을 7단계로 나눈 것을 말한다.
+각 계층을 분리함으로서 독립적인 역할을 할 수 있다.
+추가로 역할을 분리되면서 문제 발생 시 어느 계층에서 문제가 발생하는지 파악이 가능해진다. 🚏 목적 OSI 7계층은 프로토콜을 기능별로 나눈 것이다.
+각 계층은 하위 계층의 기능만을 이용하고, 상위 계층에게 기능을 제공한다.
+은 이러한 계층들로 구성되는 프로토콜 시스템이 구현된 시스템을 가리키며,
+이것은 하드웨어나 소프트웨어 혹은 둘의 혼합으로 구현될 수 있다.
+일반적으로 하위 계층들은 하드웨어로, 상위 계층들은 소프트웨어로 구현된다. 🪜 계층 기능 1️⃣ 물리 계층 (Physical Layer) OSI 모델 맨 밑의 계층으로서, 네트워크 데이터가 전송되는 물리적인 매체이다.
+디지털에서 아날로그로 변환되며 또는 그 반대의 신호로 변환되어 물리적인 전송이 가능하게 한다.
+또한 주소 개…"/><meta data-react-helmet="true" property="og:author" content="김성수"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-43ff2f47c9c351c0df7a.js"/><link as="script" rel="preload" href="/framework-0ca52d9912f86fd0bfc4.js"/><link as="script" rel="preload" href="/app-911ec9c16aea38400af5.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-f19d97e82fbe55159237.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-433bdb880ac74c211239.js"/><link as="fetch" rel="preload" href="/page-data/osi-7layer/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">seongsu.me</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">1️⃣1️⃣</div><div class="info"><div class="categories"><a class="category" href="/posts/기타">기타</a></div></div><h1 class="title">OSI 7계층 &amp; TCP 4계층</h1><div class="info"><div class="author">posted by <strong>seongsu</strong>,</div> <!-- -->February 18, 2022</div></header><div class="post-content"><div class="markdown"><br>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 49.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACT0lEQVQoz1WRyU7bYBRGvQbRChIGj7F/2/EY4ymQkMYMZSgJghZIKKCoCLpggcSi2yL1Degr8KSnIq2qdnF0vtXV/e6VXLfJ9vYm73p9XMdFUzV0TZ868AOSVkIYBERhSPwH3wswVB3HtGmFLbLVlDyNKbMcqaHrOMKeDjMbJoZu/KVhNHBsizgQlIlgp+uSJoKaHaHpDmWjQ9/YIXNS9raaJHIXyTAMFEVlYX6Bxfrif9Trdeq1GitLy+iuhW43yDTBthEyNEJ2FI+1pk7mqtyduXybBEi9jR7j0ZjT01Mmkwmj0YibLzcMDgecHJ9wfXnF4e4+wjARDYvUEvRFk561SumURK0Ev5UxOOpx8blCer3T7vtdhoMh52fnbG1ucTQ8Ym93j263y1a/opeVZJpFqtrEoYnnG9S8gpViH7kYIq99olaMeFteIbXbbW5vb7kYX3B/f8/d3dfphuPxePqY2kIdQ5PRdY0lIVBiHy0L0NsRWidmpWqxuJNQP0iZH+ZImqYjr8ioiorv+URhRBhG0xwGIWEQUWQJZeqTpxZeYCE7IbLTRHEDIiuldHq07R4du0J6rffy8sLz80/KoiTPi6mjKKYofue1dk6euKzHglVX4Fghvulhmx6lGbGhtVk3O3TcPlJVVTx9f+Lx8RGv6SGEjS1shCWmdhwX13VwLZNs2WFT8fmgBpwrCR3FJo9VrJpMPW4yc9BGWl5aZnZmlrm5NyiKMq3+L5qioasaecuiWnfYr5p83Pe5PA64G0U8XLf48ZBxsucxyE1+AULeNzxxgBZmAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+    style="padding-bottom: 48.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAABJ0AAASdAHeZh94AAACbUlEQVQozwFiAp39AP7///////D19N3m5enx8OPs6trk4+Dp6P////////////////b8/Nrn59/m5uHo6ODq6vn9/f///////wD7//7s3N3GYmXFdHXDeHnBcHHBcHLCYmTPfH/3+vr9///Xm5zKVljGZGXFfX3CfX7DcHHOYWPHWlvs1dYA8fb33sbBvDEdv11LvWNPvVlGwF1IvkczwUs59/z9////xGNjuRwevzAxvFFRuUhIukJCwCorsRcZ4bW0AO/y9uncy++jPOuqT+arXuiqVumqV++nQ+2rV/f6/v///9GJjMWNkdKKj9GSmdKGjNOSmM6Qk756fua6ugD19frf4MiurxK3uCiuuUOxuDewukGysw+1tzv19Pr+//+0fXOzQjqdRzSRRS6TRC6ORSysSj2jOi/Xw74A/fj6xNzTApNjHJx5M52FIpt6MJ2DB5ZrKaB4+/f4////creiSqOWJZ96IZx1M6CCD5ptPKSNOpmHud3PAP/8+cXV4gFstRh6uS2BtyJ9tyl/tgBttyqBvPz59////2ygxid+tDiJv2KavG6hvE6QvTiLwSd8srnR4wD39/PMzt1CTqhQXq5caq5VY61daa9CUKteZ7H5+fb///6Rkbt4Zqd6bq59bax1aqt8bKqCcbFxYqTGyt4A+vv3zMfVNxhyTTR/WkiEUzyBV0SCNxpyVj6F/f78////l2yzYxmYfkajfEOheT6gfkeieDmiWQ+O0sDbAPr5+NHW20NfglVtjXSHm2h9lXGEmkRfg2F4lPr5+P7//bGcxI5mrph2tZd0s5Zzs5d0s5h0tYpjqt3U5KxveRvo7vKVAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="slack(1).png"
-        title="slack(1).png"
-        src="/static/ae747d018a708373751d7269b4db142e/37523/slack(1).png"
-        srcset="/static/ae747d018a708373751d7269b4db142e/e9ff0/slack(1).png 180w,
-/static/ae747d018a708373751d7269b4db142e/f21e7/slack(1).png 360w,
-/static/ae747d018a708373751d7269b4db142e/37523/slack(1).png 720w,
-/static/ae747d018a708373751d7269b4db142e/302a4/slack(1).png 1080w,
-/static/ae747d018a708373751d7269b4db142e/07a9c/slack(1).png 1440w,
-/static/ae747d018a708373751d7269b4db142e/ee787/slack(1).png 2022w"
+        alt="osi7layer.png"
+        title="osi7layer.png"
+        src="/static/703b6e89250d4a58311399140af78483/37523/osi7layer.png"
+        srcset="/static/703b6e89250d4a58311399140af78483/e9ff0/osi7layer.png 180w,
+/static/703b6e89250d4a58311399140af78483/f21e7/osi7layer.png 360w,
+/static/703b6e89250d4a58311399140af78483/37523/osi7layer.png 720w,
+/static/703b6e89250d4a58311399140af78483/00b70/osi7layer.png 733w"
         sizes="(max-width: 720px) 100vw, 720px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
+<br>
+<h2 id="-osi-7계층" style="position:relative;"><a href="#-osi-7%EA%B3%84%EC%B8%B5" aria-label=" osi 7계층 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🎢 OSI 7계층</h2>
 <blockquote>
-<p>먼저, <a href="https://api.slack.com">https://api.slack.com</a> 에 접속해 준다.</p>
+<p>Open Systems Interconnection</p>
 </blockquote>
-<br/>
-<p>사이트에 접속 했다면 왼쪽 아래에 <code class="language-text">Create an app</code> 버튼을 눌러준다.<br/></p>
-<br/>
+<p>OSI 7계층이란 네트워크에서 통신이 일어나는 과정을 7단계로 나눈 것을 말한다.<br>
+각 계층을 분리함으로서 독립적인 역할을 할 수 있다.<br>
+추가로 역할을 분리되면서 문제 발생 시 어느 계층에서 문제가 발생하는지 파악이 가능해진다.<br></p>
+<br>
+<h3 id="-목적" style="position:relative;"><a href="#-%EB%AA%A9%EC%A0%81" aria-label=" 목적 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🚏 목적</h3>
+<p>OSI 7계층은 프로토콜을 기능별로 나눈 것이다.<br>
+각 계층은 하위 계층의 기능만을 이용하고, 상위 계층에게 기능을 제공한다.<br>
+<code class="language-text">프로토콜 스택</code>은 이러한 계층들로 구성되는 프로토콜 시스템이 구현된 시스템을 가리키며,<br>
+이것은 하드웨어나 소프트웨어 혹은 둘의 혼합으로 구현될 수 있다.<br>
+일반적으로 하위 계층들은 하드웨어로, 상위 계층들은 소프트웨어로 구현된다.<br></p>
+<br>
+<h3 id="-계층-기능" style="position:relative;"><a href="#-%EA%B3%84%EC%B8%B5-%EA%B8%B0%EB%8A%A5" aria-label=" 계층 기능 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🪜 계층 기능</h3>
+<br>
+<h4 id="span-stylecolor-03154d1️⃣-물리-계층span-physical-layer" style="position:relative;"><a href="#span-stylecolor-03154d1%EF%B8%8F%E2%83%A3-%EB%AC%BC%EB%A6%AC-%EA%B3%84%EC%B8%B5span-physical-layer" aria-label="span stylecolor 03154d1️⃣ 물리 계층span physical layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #03154D"><strong>1️⃣ 물리 계층</strong></span> (Physical Layer)</h4>
+<p>OSI 모델 맨 밑의 계층으로서, 네트워크 데이터가 전송되는 물리적인 매체이다.<br>
+디지털에서 아날로그로 변환되며 또는 그 반대의 신호로 변환되어 물리적인 전송이 가능하게 한다.<br>
+또한 주소 개념이 없으며 물리적으로 연결된 노드간에 신호를 주고 받는다.<br></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">비트(Bit)</code></li>
+</ul>
+<br>
+<blockquote>
+<p>대표적인 하드웨어 장비 <a href="https://ko.wikipedia.org/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%ED%97%88%EB%B8%8C">허브</a>, <a href="https://ko.wikipedia.org/wiki/%EB%A6%AC%ED%94%BC%ED%84%B0">리피터</a>, <a href="https://ko.wikipedia.org/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%EC%96%B4%EB%8C%91%ED%84%B0">어댑터</a>, <a href="https://ko.wikipedia.org/wiki/%EB%AA%A8%EB%8E%80">모뎀</a></p>
+</blockquote>
+<br>
+<h4 id="span-stylecolor-5b1a8e2️⃣-데이터-링크-계층span-datalink-layer" style="position:relative;"><a href="#span-stylecolor-5b1a8e2%EF%B8%8F%E2%83%A3-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%81%ED%81%AC-%EA%B3%84%EC%B8%B5span-datalink-layer" aria-label="span stylecolor 5b1a8e2️⃣ 데이터 링크 계층span datalink layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #5B1A8E"><strong>2️⃣ 데이터 링크 계층</strong></span> (DataLink Layer)</h4>
+<p>Point to Point 간 신뢰성 있는 전송을 보장하기 위한 계층이다.<br>
+네트워크 위의 개체들 간 데이터를 전달하고, 물리 계층에서 발생할 수 있는 오류를 찾아내고, 수정하는데 필요한 기능적, 절차적 수단을 제공한다.<br>
+주소 값은 물리적으로 할당 받게 되는데, 네트워크 카드의 MAC 주소를 받아 목적지를 찾아간다.<br></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">프레임(Frame)</code></li>
+</ul>
+<br>
+<blockquote>
+<p>대표적인 하드웨어 장비 <a href="https://ko.wikipedia.org/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%EB%B8%8C%EB%A6%AC%EC%A7%80">브릿지</a>, <a href="http://wiki.hash.kr/index.php/L2_%EC%8A%A4%EC%9C%84%EC%B9%98">L2 switch</a>, <a href="https://ko.wikipedia.org/wiki/%EC%9D%B4%EB%8D%94%EB%84%B7">이더넷</a> 등</p>
+</blockquote>
+<br>
+<h4 id="span-stylecolor-0b5bb53️⃣-네트워크-계층span-network-layer" style="position:relative;"><a href="#span-stylecolor-0b5bb53%EF%B8%8F%E2%83%A3-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5span-network-layer" aria-label="span stylecolor 0b5bb53️⃣ 네트워크 계층span network layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #0B5BB5"><strong>3️⃣ 네트워크 계층</strong></span> (Network Layer)</h4>
+<p>여러개의 노드를 거칠때마다 경로를 찾아주는 역할을 하는 계층이다.<br>
+다양한 길이의 데이터를 네트워크를 통해 전달하고, 그 과정에서 전송 계층(4계층)이 요구하는 품질을 제공하기 위한 기능적, 절차적 수단을 제공한다.<br>
+수많은 네트워크들의 연결로 이뤄지는 네트워크 속에서 어딘가에 있는 목적지로 데이터를 전송하기 위해, 라우터 기능으로 IP 주소를 이용해 길을 찾고 포워딩을 하여 다음 라우터에 데이터를 넘겨준다.<br></p>
+<br>
+<p><a href="https://velog.io/@hidaehyunlee/IP-address%EB%9E%80">IP 주소에 관한 쉬운 설명</a></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">패킷(Packet)</code></li>
+</ul>
+<br>
+<blockquote>
+<p>대표적인 하드웨어 장비 <a href="http://wiki.hash.kr/index.php/L3_%EC%8A%A4%EC%9C%84%EC%B9%98">L3 Switch</a>, <a href="https://ko.wikipedia.org/wiki/%EB%9D%BC%EC%9A%B0%ED%84%B0">라우터</a></p>
+</blockquote>
+<br>
+<h4 id="span-stylecolor-17a5424️⃣-전송-계층span-transport-layer" style="position:relative;"><a href="#span-stylecolor-17a5424%EF%B8%8F%E2%83%A3-%EC%A0%84%EC%86%A1-%EA%B3%84%EC%B8%B5span-transport-layer" aria-label="span stylecolor 17a5424️⃣ 전송 계층span transport layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #17A542"><strong>4️⃣ 전송 계층</strong></span> (Transport Layer)</h4>
+<p>통신을 활성화하기 위한 계층이다.<br>
+보통 TCP 프로토콜을 이용하며, 포트를 열어서 응용프로그램들이 전송을 할 수 있게 한다.<br>
+전송 계층은 양 끝단의 사용자들이 신뢰성 있는 데이터를 주고 받을 수 있도록 해 주어, 상위 계층에서 데이터 전달의 유효성이나 효율성을 생각하지 않도록 해준다.<br>
+이 계층까지는 물리적인 계층에 속하며 TCP/UDP 프로토콜을 사용한다.<br></p>
+<br>
+<p><a href="https://velog.io/@hidaehyunlee/TCP-%EC%99%80-UDP-%EC%9D%98-%EC%B0%A8%EC%9D%B4">TCP와 UDP의 차이점</a></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">세그먼트(Segment)</code></li>
+</ul>
+<br>
+<blockquote>
+<p>대표적인 하드웨어 장비 <a href="http://wiki.hash.kr/index.php/L4_%EC%8A%A4%EC%9C%84%EC%B9%98">L4 switch</a></p>
+</blockquote>
+<br>
+<h4 id="span-stylecolor-fcb40b5️⃣-세션-계층span-session-layer" style="position:relative;"><a href="#span-stylecolor-fcb40b5%EF%B8%8F%E2%83%A3-%EC%84%B8%EC%85%98-%EA%B3%84%EC%B8%B5span-session-layer" aria-label="span stylecolor fcb40b5️⃣ 세션 계층span session layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #FCB40B"><strong>5️⃣ 세션 계층</strong></span> (Session Layer)</h4>
+<p>데이터 통신을 위한 논리적인 연결을 담당하는 계층이다.<br>
+반이중 방식(Half Duplex), 전이중 방식(Full Duplex)등의 통신과 함꼐, 체크포인팅과 유휴, 종료, 다시 시작 과정 등을 수행한다.<br>
+이 계층은 TCP/IP 세션을 만들고 없애는 책임을 진다.<br></p>
+<br>
+<p><a href="https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%A4%91%ED%86%B5%EC%8B%A0">이중 통신 이란?</a><br>
+<a href="https://88240.tistory.com/190">Session 이란?</a></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">데이터(Data) 또는 메세지(Message)</code></li>
+</ul>
+<br>
+<h4 id="span-stylecolor-f483386️⃣-표현-계층span-presentation-layer" style="position:relative;"><a href="#span-stylecolor-f483386%EF%B8%8F%E2%83%A3-%ED%91%9C%ED%98%84-%EA%B3%84%EC%B8%B5span-presentation-layer" aria-label="span stylecolor f483386️⃣ 표현 계층span presentation layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #F48338"><strong>6️⃣ 표현 계층</strong></span> (Presentation Layer)</h4>
+<p>응용 계층으로부터 전달받은 데이터를 읽을 수 있는 형식으로 변환해주는 계층이다.<br>
+표현 계층은 응용 계층의 부담을 덜어주는 역할이 되기도 한다.<br>
+응용 계층으로부터 전송받거나 전달해야하는 데이터의 인코딩과 디코딩이 이 계층에서 이뤄지며 데이터를 안전하게 사용하기 위한 암호화와 복호화도 이 계층에서 진행된다.<br>
+예를들어 유니코드로 인코딩 되어있는 문서를 ASCII코드로 변환해 준다.<br></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">데이터(Data)</code></li>
+</ul>
+<br>
+<h4 id="span-stylecolor-b100077️⃣-응용-계층span-application-layer" style="position:relative;"><a href="#span-stylecolor-b100077%EF%B8%8F%E2%83%A3-%EC%9D%91%EC%9A%A9-%EA%B3%84%EC%B8%B5span-application-layer" aria-label="span stylecolor b100077️⃣ 응용 계층span application layer permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><span style="color: #B10007"><strong>7️⃣ 응용 계층</strong></span> (Application Layer)</h4>
+<p>응용 프로세스와 직접 관계하여 일반적인 응용 서비스를 수행하는 계층이다.<br>
+사용자와 직접 맞닿아 있는 계층이며 최종 목적지로서 HTTP, FTP, SMTP, POP3, IMAP, Telnet 등과 같은 프로토콜이 있다.<br>
+해당 통신 패킷들은 방금 나열한 프로토콜에 의해 모두 처리되며 우리가 사용하는 브라우저나, 메일 프로그램은 프로토콜을 보다 쉽게 사용하게 해주는 응용프로그램이다.<br>
+한마디로 모든 통신의 양 끝단은 HTTP와 같은 프로토콜이지 응용프로그램이 아니다.<br></p>
+<br>
+<ul>
+<li>전송 단위 <code class="language-text">데이터(Data)</code></li>
+</ul>
+<br>
+<h2 id="-tcpip" style="position:relative;"><a href="#-tcpip" aria-label=" tcpip permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🌏 TCP/IP</h2>
+<br>
 <p><span
       class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 320px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 71.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAABf0lEQVQ4y6VT2Y6CQBDk/z/NBB40Gk04hEQ8OAQ5lLM21WsT3GTXmJ2k6DmamqnqGaPve5zPZ0RRhDRNkcQJrtcrxnH8CORhNNq2hWVZWCwWWK1WME1Txp+2uq4xDAMMfqqqQtM0uN/vEsuyRJ7nkpRlGW63m8wxFkUh0L6uaxNCSiUoVWQnCeI4luTL5SJ2cG2y5bnOPuc4ptyJ8PF4iAc83X/a5OFms4Ft21gul1IgSqcNjJRNSQRtKItS5HOdknkgLYqcsOs6uK4L3/dxOByw2+6EPAgCmdvv97IJZVE+o9pDud/VBcgzSaZXTJJiZLnszH7xPNk7mXMYvyX99ZNC5b4QshDr9RqO44iXhGWa8PwATlSgbjqMw4Cu70UeQSJivqGOxUPP88Qzx3bEN/Vv7u3pdEIYhuLn8XiUqEpIxuJOHvJOMYFe6tNjRTlm/52HL9eGhFoEhb4QkrGqnNMxN2f+nEz9kxOyw4tN0E+NJOVdmz9LndMH8LN4JPwCD5g6/65BkWYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+    style="padding-bottom: 146.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAdCAYAAACqhkzFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAH2ElEQVRIx7VWaVBU2Rn9aNZuRZ3RmajDGMOogzsKsg20At3Q23uPZpOdBmSRpVntfW8aRLQVWZpmUZGtAWVrlqY3FkGUKJM4zqg1Y1kVJ5WaVCap/Mqv5KUeoj8yqfzLV3Xve3Xr3nO/U/ec+11giiYZHPlcYkR+W3ZEfmt2GE+fG5JxOZ8tnUliiia5O3998iMA2E5ydacAgAv8jyi50gTAkk7HYOp57iFqhuRAeKrULyrn0v5AtJYlnU5AlDYks/NHVxzHYRNwB5lC3uZ78DP39yCOZ0aYf94Jqz/cAqPZ4AL0qiEfhnD8q9hL99kMwWgcorBxGMJxNkMwdo5ePfwFsciDsnVz+adERwIAAnwLALj+jC/AX/ElWHtzB1rH2gCYgtEQRDaTxtUupsXXLmXHqedzEusfpqHyuTSWaJxFLTC4nivpBSQrBXD8e2gc6t5jWrx1YsBhCG4x1UWNP74dYnlmCuh3GP3r7rb4Akc6ncLVLlaEpterAxIkl4NTtdqTnHI9IpupRJXW0uiyHq+z/PubGQpc7lrbY82PO9LahrQ84/063o1e5YWrt6X5E4+MKX0O43ngSGeQ+NoHhcGpGnFAgkQRlnlFeJxRXIcprIWY0pYbWdzlEXZxCAC8AUhlLmMPjdHLr7rjc0oQUVYRW5zHx4TctMha++/a4qd+2x0HMdVDe1micRqmtCViKkc2prLzuLVLSWyxmRlbM3KQP4qDX0g0yNVMwHEx9DjuHBhb7ab2zDTGtAwqMfOaMdrkaKLde2A82zFl8AeWeCITkc3oMLVDG7fZMJW9FpHN6tjiyRJaRb/bbr+wDcJupA3ZuL87lJ0fefsEbvskqNQDtq+TcLwPhpc6ABC5pZKrma8/yanoPc0V3jmFXeo5Si8YQhWWy5jKrgjNuuIFAJ4kN49thGx89u/x5qZSPQgpEYHjb4nMXb75YydpeLGdRBxKHKay10QWd2qjS2/X0cru1IXnXm9A5BYBRzqduWWnz04iI5I7ZUN7Mn0ljC00wMufTfDiL4Pw/Kf+jfbwVQcMOlsB6NVDh5jiycw47WI5qnZKMM2ChFu3UsGSTOXE1Iz4f36S/sEJuYVUMJpbfzOy1MaYedKZOLVmzJhd70qfXe9KGl02MDunWo4CSzKlQhTW/pjq4bsM4VgPvcrUR6sc6OPILb0syVSzzwnaDgDwIlM8CTGTh+ablXPr7cMj89cGx5ebBofsV4dNtsYhy1PDwOiywQgc+awGVTsGApOVU4HJSnNgssJ8nM23c+SWfo58rvVz/1gC0NPdw40MQKKYH7WoHrww9quv509qmwom1Pr8ySp5qtX5rLXHst7eASyxOZItm62Irbmnia0ZucaSmBtjqod1bOl0DVs6zdng6rp949N4IxnGVztptq87hffmm3Qmu/76+HLLNZNd32D9ukM0sdqZDAzxRCSismkx3WIzplvsQjXO7jjdUiuqna9nSswZIzgOOz47sgEYFEkGbhXnAE/FZonaE7jy7oRkiZF7XtadyM3XcdiJNexgYMtn9fRq01NqoWHlXEnnMq1qYIFa1L5y9mLHE7Z8ZvbLKN4ugrInxYPQHqXkMiu+RBdewc0/KU4oOiVMKj4tYGcdU+ZKgior9JxSQNS2+rMXjatnUjVLwem6JWqRwR6cUbcUlKZ9zFbMjvlF5+18B0hcX7so/EY656I6gB/F9a1npB6sRXh+yjDGvqbki4cFglZGHsQK7h/jKK1CVONsRtWOHkRl60U18wZU41QyxONR+04zPsjGx9cbSvVZu6tucoPEHdxwoQGNFLShUdIubkRlExqaq473A7ZsRo6qHA5EaXuAKG1riMq+hiitK6ja6WBLp5u37tpHUN7u4urh7eEJFMIh/8DVoJ9kgG6ABnWDNKg30UBipEJJAxMgqvS2OThd9+fQrMZXX/H0L8OyG19RC9q+C0iS/ymy9NbTsincK6XpJXy8dy/hFC80P/RQpjAcy5GFFxaoI/g1zfTcmhZGakkDnVFUzz5I3DbayJJbq/TKwTVaed96VFnPeqzg/ho1v3Utmn+3Q7iCu8l+eOfb7GKAiuuxBmFb1OtcWdD3yaUn3qaU+/8hSxj4RtAa+Yqvj3ESlEMxtfMGppmfxtSOR5jauYapnXOYZr6dI7ewSkZxSJLJNosTDvyr1IEiTcCblPJj3yYWH3mRXnX8u1zpqW/yZP4vy69FrBFOWUGVVpwlnvgnSzyJs0QTOFM08S9EYcURueVHepXJ63BMxQbc6RCAQu25Ck7OkQUO78gqO/vw88xLp1dzpGcWIhDf5UxhmB4QpfX3mNqJh2TU4xEXmvGICzfx4LRanNgEVdn/FnvpHpnwiueWHURRIv69Dp459SvOhbAv0gXnfMv02N7q9rRPFKNXybW3DwGRoRBVWp8wRePfIoq51xy55TVLPPkCVdrWWRLzTXeyN1GXKa7unmQAF3IUdzcp52ojyPtyIFdFB+mdFNDeKwC+UQWX+/xcAFFYgNf1FkqncM+83r9vSWhY28a79RO5bAIHVGkFtnR6g64LyfWDHhm86F8U+Xg+E44xCgHOnFe9n7kHAOIA4BgA7CYGQjLqXZmi8U1At//ECACAswAQDgCsX+zg5rnFm+TqdtTV3Wu359aPye/Hk6+tQ3he8397eRCW3A8AewkTwf8r/g3CeTRUGXEEtAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="slack(2).png"
-        title="slack(2).png"
-        src="/static/056c1c2b49c3315b3253ab34c654ac00/37523/slack(2).png"
-        srcset="/static/056c1c2b49c3315b3253ab34c654ac00/e9ff0/slack(2).png 180w,
-/static/056c1c2b49c3315b3253ab34c654ac00/f21e7/slack(2).png 360w,
-/static/056c1c2b49c3315b3253ab34c654ac00/37523/slack(2).png 720w,
-/static/056c1c2b49c3315b3253ab34c654ac00/2bef9/slack(2).png 1024w"
-        sizes="(max-width: 720px) 100vw, 720px"
+        alt="tcp_ip.png"
+        title="tcp_ip.png"
+        src="/static/f29d72d9b2b34941e325394cf7ed4980/72799/tcp_ip.png"
+        srcset="/static/f29d72d9b2b34941e325394cf7ed4980/e9ff0/tcp_ip.png 180w,
+/static/f29d72d9b2b34941e325394cf7ed4980/72799/tcp_ip.png 320w"
+        sizes="(max-width: 320px) 100vw, 320px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
+<br>
+<p>위에서 서술한 OSI 참조 모델은 말그대로 참조 모델일 뿐 실제 사용되는 인터넷 프로토콜은 을 7계층 구조를 완전히 따르지는 않는다. 인터넷 프로토콜 스택(Internet Protocol Stack)은 현재 대부분 TCP/IP를 따른다.<br></p>
+<br>
+<p>TCP/IP는 인터넷 프로토콜 중 가장 중요한 역할을 하는 TCP와 IP의 합성어로 데이터의 흐름 관리, 정확성 확인, 패킷의 목적지 보장을 담당한다. 데이터의 정확성 확인은 TCP가, 패킷을 목적지까지 전송하는 일은 IP가 담당한다.<br></p>
+<br>
 <blockquote>
-<p>밑의 From an app manifest는 신경쓰지 말자</p>
+<p><code class="language-text">TCP/IP의 4계층</code><br>
+TCP/IP는 OSI 참조 모델과 달리 표현계층, 세션계층을 응용계층에 다 포함시키고 있지만,<br>
+사실상 TCP/IP Model의 Application 계층 하나에서 Application, Presentatiom, Session 계층의 구현을 다 하고 있다고 이해하는 게 올바르다.<br></p>
 </blockquote>
-<br/>
-<p>그럼 이렇게 <code class="language-text">Modal</code>창이 뜨는데 위의 <code class="language-text">From scratch</code>를 클릭하자!<br/></p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 93.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAABYlAAAWJQFJUiTwAAAB/ElEQVQ4y6VTi27iMBDM/3/SUV1bQYtaBB+AgIB45eU8HfKAMKfZyChCQbQ6S5us7fV6Z3ZslWUJ13WRpimyLEMcxwjDEFEUyRotCAIkSSJ+0zTguF6vN+PgOn2LgYM/A0ynU7y/vWM8HmM2m7X+5xiTyQSvf1/xMnjB99c3WEBfwqIoUNc1rObSiFNV1e32/xmW1hrz+Ry2bQv0y+UiF/TZ+XyW/UcmkPlhMKHTyB257BuMJYo+M0ktJiPpSilJyKZwzj8Ts0H0eRF56h7urZAwCJtk84Cx0+kk1p0z9imHeZ5juVzC933YKxvr9Vq43Gw2WCwW2O122G63EkPZdCXSZ8IhAwmJlRoNkgrudSE94o9xRCEc8mMEzISmOZSRkVO3031z0mVkZ3FCWITsOI7ANf7hcLjZ8Xi8rdHf7/fwPV/QsGlMKBwya1m0DeGiqYAXmQrMnqnE+Ny/l5XFTVZE7jzPE58SYqW8+dm4f4LWvVjvA34zpEKKl0I21ZHPrpGvULXVB74Pz/PhhikcleAYxAii1uefWhUdqkDJAZohn6QzIX1e6DiuUKHCEEGsxVSiEWcnqCRHlLWPwPotLNHkuQauDaqyQJalyLWG1lkrm0eK7zMeIAK+oKqusVqtMBwOMRqN8PHxKZ3/cULz5PieKRf6VIh58zRW+A8nPb3pDeVACwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(3).png"
-        title="slack(3).png"
-        src="/static/89efb005f41e169923adefe418bc2ee7/37523/slack(3).png"
-        srcset="/static/89efb005f41e169923adefe418bc2ee7/e9ff0/slack(3).png 180w,
-/static/89efb005f41e169923adefe418bc2ee7/f21e7/slack(3).png 360w,
-/static/89efb005f41e169923adefe418bc2ee7/37523/slack(3).png 720w,
-/static/89efb005f41e169923adefe418bc2ee7/2bef9/slack(3).png 1024w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>워크스페이스가 없다면 <a href="https://slack.com/intl/ko-kr/help/articles/206845317-Slack-%EC%9B%8C%ED%81%AC%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%83%9D%EC%84%B1">여기로!</a></p>
-</blockquote>
-<br/>
-<p>봇 이름을 입력해 주고 밑에 어느 워크스페이스에 생성할 지 정해준다.<br/>
-그러면 밑의 <code class="language-text">Create App</code>이 활성화 되는데 눌러주자!<br/></p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 104.44444444444443%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAABYlAAAWJQFJUiTwAAACOElEQVQ4y5WVO4/aQBSF/avTpt8+ZbZB2gIoUqTj1UTpki6JRBwkDLYxNuDXjME8TnRm91rDY8lmpKsRM3c+33vmzK6TZgUqpXA67HGod6i0hlIK6/Uaq9UKaZpiu92iqqqr4LrW2uTkeW7WnJ+uh19/ZgjXOeZxiqxQ0EohCAJEUYR6V+NfY7fb4XA4mHA+fP6G909f8PDpO961vuKHlyCOQnx8fESr1UKn0zHRbrdvBve63a4JduWEYWiqYVVlqVBtt0iSBIPBAKPRCMPhEL1eD/1+36zdCtnLsgzOZDKB6/7Gcp1BKW00oTbU8X/H8XiEE8cxZrMZPG/WCEvYYrFA4AcGzqBOPCBaXQb36rqGM5/P4bouptMpiqI4A1IOJjF4iON0Op1Vxd+ytt/v4fCg53nIs+fq2DLB/BDBTOb6crk0YBsioDMgD1JHQvSLB6UaGQRxncEc6cL+wBlwPB6bCpgswcqpHQdnJtuVXUYDpHkJZfCC5Ou8KPpKgBTd1u1SxwbIQwTx+dBH0jYrJlyAIsktHc+AySrBIooMlECpMFpEBiDAsizN3qVuVxXqTYaqKKEr3YjOmR7kC+IFEWhf1N2Wl36IfJNCv1QmtqEvfd83v5l46cNXK/SDAHGSNK1yZnvGm3ne2OY1Y18BWY3tQZlpGzqAe3x2TH4TUHxnG5cVsl3eNG9f2n4T0AbJzOA7ZmXyB9QG3jW2/TpsINvdbDZXGt4bV0CByv8QMTIr5MwD94J5fwHxXUoxKGPTPgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(4).png"
-        title="slack(4).png"
-        src="/static/bb075e933b76a3f403a26388645e1733/37523/slack(4).png"
-        srcset="/static/bb075e933b76a3f403a26388645e1733/e9ff0/slack(4).png 180w,
-/static/bb075e933b76a3f403a26388645e1733/f21e7/slack(4).png 360w,
-/static/bb075e933b76a3f403a26388645e1733/37523/slack(4).png 720w,
-/static/bb075e933b76a3f403a26388645e1733/302a4/slack(4).png 1080w,
-/static/bb075e933b76a3f403a26388645e1733/07a9c/slack(4).png 1440w,
-/static/bb075e933b76a3f403a26388645e1733/8963a/slack(4).png 1918w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>슬랙 봇을 전반적으로 설정하는 페이지이다.</p>
-</blockquote>
-<br/>
-<p>이제 왼쪽 사이드바 중하단 쯤 <code class="language-text">Revert to the old design</code> 를 눌러준다<br/></p>
-<blockquote>
-<p>현재 페이지보다 예전 디자인이 설정하기 수월하다.</p>
-</blockquote>
-<p>예전 디자인 페이지로 변경이 되었다면 왼쪽 사이드바에서 <code class="language-text">OAuth &amp; Permissions</code> 탭을 선택해 준다!</p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 132.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAABYlAAAWJQFJUiTwAAACZklEQVRIx6WVCdOaQAyG/f//TWeqCKP2m88DTzwQYVVE03liQynSy+5M3OxB9k3eJLaKopDdbieHw0Hn+/0uj8fjLWG0rterdLtdabfb0uv1hAfeHRht8bPdblVAyByGoaxWK9U3m42s1+vn+XanehRFz70okl3iZBM7cc49EWJwuVyqkcvloq+AEuSsEXRbn89nyfNcdebrrZBLXvxw+Xa7yWQykXAWquHFYqHo/nVgnPirQWIYBIF4nif9fl913DKimOM4lv1+X8a4TkZpkEXVLYRHsiwTlzlJkkROp5OukWoWNI0WF0DA62mavlwg2KDEWBOrdVFSQGBIzL3j8ag6+3bGbGf2eKPBOpO2Nt3WMAxixDKi6r4aROFlC76iOiYSH+ISkSElPFWBIEsh7igpWIUEDqoCChAZKmYMcJfZhLV9X7pMHg6HQxmNRjIYDHTNa39DwgvLbMIweWeC+0359qfGUBr8XbFXjZb78voNANRl/Pd9X7yeJ51OR/y+L512R4PMGexaXI1treHvM3vcY8Zoix/iNp/PVajj5WJZdhlCYJ2IOreuY+GxrlQ2B4JfrdH/GT9VCvnWVHqU3K/KspEUEHLZGkC9UbDHGblosTNp+rtQg9ZJ+Ig6NYEY06mU6hkeNRoEJghwywTE9ZRpknopvtQyEkUbSY7x28Q8XU5PkqWpOJdJdr5KerlL4nJJTunTvUOsLhp51jAsFABhTxFqHn6M5YsXSOAHMhiOxB98FX/4IbNwLuPPT5lOplrf5Ol0OtU/tPF4rDoym82UgzJtXH4XlxfPzpJlcqbfnd1bLn8DvAXlF00/RYsAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(5).png"
-        title="slack(5).png"
-        src="/static/fb9080b818605de4447717cf5a32042e/37523/slack(5).png"
-        srcset="/static/fb9080b818605de4447717cf5a32042e/e9ff0/slack(5).png 180w,
-/static/fb9080b818605de4447717cf5a32042e/f21e7/slack(5).png 360w,
-/static/fb9080b818605de4447717cf5a32042e/37523/slack(5).png 720w,
-/static/fb9080b818605de4447717cf5a32042e/302a4/slack(5).png 1080w,
-/static/fb9080b818605de4447717cf5a32042e/33d1d/slack(5).png 1150w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>슬랙봇 권한 설정</p>
-</blockquote>
-<br/>
-<p>우리는 슬랙봇을 만들 것이기 때문에 밑의 <code class="language-text">User Token Scopes</code> 는 신경쓰지 않아도 된다<br/>
-위의 <code class="language-text">Bot Token Scopes</code> 부분에서 <code class="language-text">Add permission ~</code> 부분을 클릭해서 원하는 권한을 집어 넣어 준 뒤 <code class="language-text">Add on OAuth Scope</code> 버튼을 클릭하자!</p>
-<blockquote>
-<p>나중에도 추가 가능하니 급하게 생각 안해도 된다 🙃</p>
-</blockquote>
-<br/>
-<p>눌렀을 때 상단에 초록색으로 <code class="language-text">Success!</code>라고 뜨면 성공이다.<br/></p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 39.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABFklEQVQoz41Si26DMAzk/38NaayFIdoCAcLWwXiE95ubnKlrNG3VTrrYsRPnEkfb9x1EwrpuULFtX3N1zQ23mJojqzVNA13XYR4PeLEsHA/POJ9OsG0bnufBsiw4jgPjyYBpmjAMA1EU4SduRbV5npHnGdKiQtEMSPIKmWhQFAXoMLJlWUpLzD4yiFJgHEfQ3q7r0Pf9XeE0TYjCEG50hRO+48xTXHgKzjlCiruupPQvLhhjcu65nrwBxYUQ94JDP8D3fYSMIQoYrm+vCJgvF5GKtm0lySclwzBIS6Q4qVTfVFvXFXVdo6oqSenXNZZlwX+hNkajTiZJIqXHcYwgCBDzWCr6rZt/8fvKNFBRNUmqH32ZR/gERaFnyIhW1MAAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(6).png"
-        title="slack(6).png"
-        src="/static/b962527946c1ee5375ed0fc9be91e872/37523/slack(6).png"
-        srcset="/static/b962527946c1ee5375ed0fc9be91e872/e9ff0/slack(6).png 180w,
-/static/b962527946c1ee5375ed0fc9be91e872/f21e7/slack(6).png 360w,
-/static/b962527946c1ee5375ed0fc9be91e872/37523/slack(6).png 720w,
-/static/b962527946c1ee5375ed0fc9be91e872/302a4/slack(6).png 1080w,
-/static/b962527946c1ee5375ed0fc9be91e872/e6c84/slack(6).png 1148w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>슬랙봇 권한 설정 이전에는 버튼이 비활성화 되어있다.</p>
-</blockquote>
-<br/>
-<p>이제! 슬랙 봇 설치 할 수 있는 버튼이 활성화가 되어있다<br/>
-이제 <code class="language-text">Install to Workspace</code> 버튼을 눌러 설치를 해주도록 하자<br/></p>
-<blockquote>
-<p>만약 활성화가 안되어있다면 권한 설정이 안되어있는지 확인해보자</p>
-</blockquote>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 67.77777777777777%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAABrElEQVQ4y41UzU7CQBDuE/kSPoy8gU9gjEZMvBpOXA2JCWAPGA9cJCEoEE1KIVAoLWhLf6CU0m37mV0DKdCik0x2M9355vs6s8shZlEUMY/v47H4uTTjkoJJCUuyhuyYsP3VQfEDQPohDEO2EhICIHhsGLgqNABPw9dUx+e3hNu3AkqDOkskQZCoiEujL1vA68cACJZwvRDRUoUr5BDY4lFFjKHv+5BlGcPhEDzP4yyTQfb6EspIgj4zoCgK825XxGg0Qq/XQ6fTQb/fZ/EdhhtASZIwHo/RbreRz+dxk82iWCyhXCqjWq2Cf+JRqTyj2WxCVVVWnK6GYfxPsuM40DSNJem6jul0ylbXdf+WTA+1Wi2IoghBEFCr1RgAlTaZTBIBaBOp74MyQEIIk23bNkzDxEyfwbIsJocWC6MIPiHbzsaN5sU7zQCDIGCgi8UCtmUzMLqfz+dYed4BwzA28AeAx6aeFqEmfCt4aNdQFt7hrJMHe6fL+9dsc1CZqIhcD/f1F5zcneM0d4GhqW1ZJgFzSdO+3zn68z3iYx2Q33gKgS3DtDFIu6/HHocfnd81jNpIyeUAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(7).png"
-        title="slack(7).png"
-        src="/static/0864b808651f9e34b608af01382e5e95/37523/slack(7).png"
-        srcset="/static/0864b808651f9e34b608af01382e5e95/e9ff0/slack(7).png 180w,
-/static/0864b808651f9e34b608af01382e5e95/f21e7/slack(7).png 360w,
-/static/0864b808651f9e34b608af01382e5e95/37523/slack(7).png 720w,
-/static/0864b808651f9e34b608af01382e5e95/302a4/slack(7).png 1080w,
-/static/0864b808651f9e34b608af01382e5e95/252a4/slack(7).png 1314w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>이제 끝이다!</p>
-</blockquote>
-<br/>
-<p>이제 허용을 눌러주면 다시 <code class="language-text">OAuth &amp; Permissions</code> 페이지로 넘어오게 된다.</p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABRUlEQVQoz61STY+CQAydPw8Hg64x/CS9czBBjRGRjxlgMAKKoODbtBt29eRms02aDjPl9fW14nK5wPd9hGGIIAjY0zRFkiSQUnKM4xh7b8/fSiocj0c82+Px+D6L8/mMzWaD7XbLYOv1GrvdjgtEUQTP8ziu3BXfu64LGcsBitBewEXTNMwoSzNmQ9W11i8MlVIcKU/rHLnWUEkC/xAgiiWU+nrrug6ibVsGGH6iSI9RGLEU1C6xJHY/0hwQyBRhViBITzhVNfqu49ZFWZacSKBlUYI0zfMcfzUxAMznc5imiclkgtFohOnHFLZtv/XZbIblcomqqkDysYZFUWCxWMAwDAazLIuBx+PxW6dcx3FYLga83W6gtvu+x3+YoMkMwpOWJD6tEK0GFbvf72992EMeCjG7Xq+gfazrmodCZ7p7TvytfwJ+Lt0I/NWN8wAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(8).png"
-        title="slack(8).png"
-        src="/static/cc91c997e2a8e9b556bcef66ebaf4d77/37523/slack(8).png"
-        srcset="/static/cc91c997e2a8e9b556bcef66ebaf4d77/e9ff0/slack(8).png 180w,
-/static/cc91c997e2a8e9b556bcef66ebaf4d77/f21e7/slack(8).png 360w,
-/static/cc91c997e2a8e9b556bcef66ebaf4d77/37523/slack(8).png 720w,
-/static/cc91c997e2a8e9b556bcef66ebaf4d77/302a4/slack(8).png 1080w,
-/static/cc91c997e2a8e9b556bcef66ebaf4d77/11b93/slack(8).png 1124w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>OAuth Token은 소중하니 노출될 일이 없게 하자❗️</p>
-</blockquote>
-<br/>
-<p>이제 <code class="language-text">xbob-</code> 로 시작하는 토큰을 이용해 이곳저곳에서 슬랙봇을 조종할 수 있다 😏<br/>
-저 토큰이 깃헙 코드에 올라가는 실수를 저지르지 않도록 잘 관리해주자!!<br/></p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 74.44444444444443%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACeElEQVQ4y42S3W7TMBiGHWDE9meni5u/Nk3SJO3arlPRMiEkrgGJA44GJxwsuxiug8vgZjhcBadQsSQfstt1IDrg4NHrxMqjN/5MXMJlmR6/F464pjZcARc1o1ALLmrlqtp1Ve17QR34Qe0eb591UpvXjGrgilJWx0F57R2PEqJ66jwKA7RtitTmyCig74c4SnNUXohuP8C+FxqUF6DqB+a901PIOCDjwqR0FILovSVKqWoQDb9J4bSO7N0+efS4WV28bD58/NRUz180YZw1g6RoBkm+Z5iVTThMGw6i4ULeciF/MDDiS+J5fpUk2UYKBwXI1j6yuzgtuldvLrvF2bMujLNukOR7otHYpBfGHQPRcSE7DrLlQiIDuCR+36uSYbwRwkHgoqM2w74fYhRnOJ7MMc2nGGflb4zGE4ziFE0rLRQ7oWkoZTVwXdPQkT0jDKIYp4sVLlcVlrMlxmnxh3AwGh8WUsoqSvkGQKIUjhGGUYwnpytMi+le8CtJPn1YaFNaARMb5bj6DPcNtVAzmZ+ZX8+nC4NeFyenGKe5EfJDDTmDjaM3GXTUpkaoP8rK2V6m8w69N3xQaFMjVMpD4PcNi9nyoOyfDe2jowrA2QzHc5TRpLP7GQbJBIsDojvyvzVklJ1zBt/1UED0GkpFGw6Ttpydtfl00ebT0x2LPcVs2cZp0TIuWgaGZn+xGWUXnEHLKEdOOeoz9PzITHg0LjHRU73LfIveG8Qpgr678h4G8E6f4ZJR/plR/oVRfsMoX2s4yDUIaXK7dtZS9gxCOmvpbBOkvAHp3ICUXxmH14QQ8tSyrIllWQvLsua7XBBC/pf5LmeEEPgJIPs+pm4UPF8AAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(9).png"
-        title="slack(9).png"
-        src="/static/e053a386cf8f87b972240e4f2151f13a/37523/slack(9).png"
-        srcset="/static/e053a386cf8f87b972240e4f2151f13a/e9ff0/slack(9).png 180w,
-/static/e053a386cf8f87b972240e4f2151f13a/f21e7/slack(9).png 360w,
-/static/e053a386cf8f87b972240e4f2151f13a/37523/slack(9).png 720w,
-/static/e053a386cf8f87b972240e4f2151f13a/302a4/slack(9).png 1080w,
-/static/e053a386cf8f87b972240e4f2151f13a/07a9c/slack(9).png 1440w,
-/static/e053a386cf8f87b972240e4f2151f13a/0e758/slack(9).png 2502w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<blockquote>
-<p>왼쪽 아래 <code class="language-text">앱</code> 탭에 방금 만든 봇으로 들어간다</p>
-</blockquote>
-<br/>
-<p>봇 설정을 누르면 위 사진처럼 설정 창이 뜨는데<br/>
-여기서 <code class="language-text">이 앱을 채널에 추가</code> 버튼을 눌러준 뒤 원하는 채널에 넣어주자<br/></p>
-<br/>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 74.44444444444443%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACyklEQVQ4y41SuY7cRhQkAw/75H01r+YxnBl6diUN115BCpQpFBTLThxo9N8Kd2Gn0sAi+xnsnbVWF6CgUI8NsFBV7xmeQXhXuX8xm71DFn1LCTsSTI82t4+O7R491z/GUaIR+MHR9wL9hixyxGgBfYsQPmZR+y50i9LwHf+QJjEgCwGyCBBEIYwSSEQOcZqBH8Tg+ZFm1wvBC2LwwwRsxwdMmAYhDHwvBcacPwzf90eRZh84s2fO7E/IwlMiiulw/Wx6+vzFdPHkt6nb7ifZbafh4slUNv0kqnZKsmrClE2E8U+E8X8JswET+sYIw2gsS3nizAFK+YwsrMJYqKYfVN0Par27ULLdqKJeq3q9U7nsVFa1KhalwpQpwvjCM6YMMKVvjCgIxzLLT4xQoAgr9MsK4kTA5eF3aPcHqPsBmvUO2s2vUK930PSDnkUhQYswvojOhPGzQ0pG4YcnHktwRatwUECUNzBcPIbh8gCy20IuOyjq9Znv5jSXQLQg+1IQWWhEmJ6Yl4AdCIV4AHEmQcgOqnajf86qFvIFstNz0WxAFPX3HWKER4LpyaE2cMp0ZJEV8OrlSyjrNcRZBaJs/kda1CDarWbyPUHLQiPF9ORzBzCmCllYn8yzw6i7y+seMnnn8h5L7B92eO+QUQ7kLBjGAobHV3B1/Rz2h2uod4+gXZbTD3oxmew+d0i/6nC1skZK2ClLM+DMVsuBR0kG/XAJ2/0jkN0GCtlB2fS6z/vlLA4XQfLQ4XI2COEDwfSjZ7vAKJ/QCs2JKOZ2s59lt52bfvgG7XY/51U76/u7E5seRr4imM4YkSUy6MhRClXb66V8iw6qpoc0r4DbDtiOq8Edd4n/53I2e4zIe4zI3xiRG4zI7QJK+S1l/DOzB9/3b9y+5Y5zw23nhnH7H0zoa8MwjJVpmmvTNAfTNHdnHgzD+Fnszrw1DIP+B4nePcKYKGAqAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="slack(10).png"
-        title="slack(10).png"
-        src="/static/17c9993adf4e26c31967c22ef50cf759/37523/slack(10).png"
-        srcset="/static/17c9993adf4e26c31967c22ef50cf759/e9ff0/slack(10).png 180w,
-/static/17c9993adf4e26c31967c22ef50cf759/f21e7/slack(10).png 360w,
-/static/17c9993adf4e26c31967c22ef50cf759/37523/slack(10).png 720w,
-/static/17c9993adf4e26c31967c22ef50cf759/302a4/slack(10).png 1080w,
-/static/17c9993adf4e26c31967c22ef50cf759/07a9c/slack(10).png 1440w,
-/static/17c9993adf4e26c31967c22ef50cf759/0e758/slack(10).png 2502w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<br/>
-<p>그럼 채널에 방금 만든 봇이 추가가 되었다.<br/>
-이제 슬랙봇 <code class="language-text">OAuth Token</code>을 활용하여 메세지 전송 등 여러 기능을 사용할 수 있다.<br/></p>
-<blockquote>
-<p>자세한 내용은 <a href="https://api.slack.com/docs">여기를</a> 참고하자</p>
-</blockquote>
-<br/>
-<br/>
+<br>
+<p>아이러니 하게도 TCP/IP 4계층은 토대는 OSI 7계층보다 먼저 나왔고<br>
+비공식 표준이지만 OSI 7계층보다 훨씬 많이 이용된다.<br></p>
+<br>
+<br>
 <div class="table-of-contents">
 <ul>
-<li><a href="#-slack-bot-%EC%83%9D%EC%84%B1">🤖 Slack Bot 생성</a></li>
+<li>
+<p><a href="#-osi-7%EA%B3%84%EC%B8%B5">🎢 OSI 7계층</a></p>
+<ul>
+<li>
+<p><a href="#-%EB%AA%A9%EC%A0%81">🚏 목적</a></p>
+</li>
+<li>
+<p><a href="#-%EA%B3%84%EC%B8%B5-%EA%B8%B0%EB%8A%A5">🪜 계층 기능</a></p>
+<ul>
+<li><a href="#span-stylecolor-03154d1%EF%B8%8F%E2%83%A3-%EB%AC%BC%EB%A6%AC-%EA%B3%84%EC%B8%B5span-physical-layer"><span style="color: #03154D"><strong>1️⃣ 물리 계층</strong></span> (Physical Layer)</a></li>
+<li><a href="#span-stylecolor-5b1a8e2%EF%B8%8F%E2%83%A3-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%81%ED%81%AC-%EA%B3%84%EC%B8%B5span-datalink-layer"><span style="color: #5B1A8E"><strong>2️⃣ 데이터 링크 계층</strong></span> (DataLink Layer)</a></li>
+<li><a href="#span-stylecolor-0b5bb53%EF%B8%8F%E2%83%A3-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5span-network-layer"><span style="color: #0B5BB5"><strong>3️⃣ 네트워크 계층</strong></span> (Network Layer)</a></li>
+<li><a href="#span-stylecolor-17a5424%EF%B8%8F%E2%83%A3-%EC%A0%84%EC%86%A1-%EA%B3%84%EC%B8%B5span-transport-layer"><span style="color: #17A542"><strong>4️⃣ 전송 계층</strong></span> (Transport Layer)</a></li>
+<li><a href="#span-stylecolor-fcb40b5%EF%B8%8F%E2%83%A3-%EC%84%B8%EC%85%98-%EA%B3%84%EC%B8%B5span-session-layer"><span style="color: #FCB40B"><strong>5️⃣ 세션 계층</strong></span> (Session Layer)</a></li>
+<li><a href="#span-stylecolor-f483386%EF%B8%8F%E2%83%A3-%ED%91%9C%ED%98%84-%EA%B3%84%EC%B8%B5span-presentation-layer"><span style="color: #F48338"><strong>6️⃣ 표현 계층</strong></span> (Presentation Layer)</a></li>
+<li><a href="#span-stylecolor-b100077%EF%B8%8F%E2%83%A3-%EC%9D%91%EC%9A%A9-%EA%B3%84%EC%B8%B5span-application-layer"><span style="color: #B10007"><strong>7️⃣ 응용 계층</strong></span> (Application Layer)</a></li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/express-tdd/"><div class="direction">이전 글</div><div class="title">Jest를 이용한 Express 단위 테스트</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/express-error-middleware/"><div class="direction">다음 글</div><div class="title">Express error middleware &amp; Custom error module</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nfl1ryxditimo12">seongsu</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/slack-bot/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5f5796b5cc7e557af05.js"],"app":["/app-911ec9c16aea38400af5.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0d19b91483ccbe548111.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a4d52df74927d7723f63.js"],"component---src-pages-about-js":["/component---src-pages-about-js-c6aba30b47fe5dc3af51.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d7d74f59dcc47f961428.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-433bdb880ac74c211239.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-561551115abc892160e3.js"]};/*]]>*/</script><script src="/polyfill-a5f5796b5cc7e557af05.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-433bdb880ac74c211239.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-f19d97e82fbe55159237.js" async=""></script><script src="/app-911ec9c16aea38400af5.js" async=""></script><script src="/framework-0ca52d9912f86fd0bfc4.js" async=""></script><script src="/webpack-runtime-43ff2f47c9c351c0df7a.js" async=""></script></body></html>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#-tcpip">🌏 TCP/IP</a></p>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/typeorm-virtual-column-2/"><div class="direction">이전 글</div><div class="title">Typeorm Virtual Column 설정 (2)</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nfl1ryxditimo12">seongsu</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/osi-7layer/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5f5796b5cc7e557af05.js"],"app":["/app-911ec9c16aea38400af5.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0d19b91483ccbe548111.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a4d52df74927d7723f63.js"],"component---src-pages-about-js":["/component---src-pages-about-js-c6aba30b47fe5dc3af51.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d7d74f59dcc47f961428.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-433bdb880ac74c211239.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-561551115abc892160e3.js"]};/*]]>*/</script><script src="/polyfill-a5f5796b5cc7e557af05.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-433bdb880ac74c211239.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-f19d97e82fbe55159237.js" async=""></script><script src="/app-911ec9c16aea38400af5.js" async=""></script><script src="/framework-0ca52d9912f86fd0bfc4.js" async=""></script><script src="/webpack-runtime-43ff2f47c9c351c0df7a.js" async=""></script></body></html>
