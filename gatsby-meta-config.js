@@ -89,14 +89,13 @@ module.exports = {
         title: '자체 인트라넷 슬랙 알림 서비스 개발',
         description:
           '42 과정을 진행하며 자체 인트라넷의 알림서비스에 불편함을 느껴 42 Rest Api를 통해 새로운 이벤트가 감지되면 슬랙으로 전송해주는 서비스를 만들게 되었습니다.',
-        techStack: ['Node.js', 'Heroku', 'MySQL', 'Slack-Api'],
+        techStack: ['Node.js', 'TypeScript', 'EC2', 'MySQL', 'Slack-Api'],
         thumbnailUrl: '42alert.png',
         links: {
           post: '/42alert-retrospective',
-          github: 'https://github.com/nfl1ryxditimo12/42Alert',
+          github: 'https://github.com/nfl1ryxditimo12/42Notifier',
           googlePlay: '',
           appStore: '',
-          demo: 'https://ftalert.herokuapp.com/',
         },
       },
     ],

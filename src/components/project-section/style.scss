@@ -28,6 +28,7 @@
 
       .thumbnail {
         width: 100%;
+        border-radius: 10px;
       }
 
       .tech-stack {
@@ -49,7 +50,6 @@
         font-weight: 400;
         line-height: 1.4;
       }
-
 
       @include md {
         flex-direction: column;

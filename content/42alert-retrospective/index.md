@@ -1,6 +1,6 @@
 ---
 emoji: 3️⃣
-title: 42 Alert 프로젝트 회고
+title: Slack Api를 이용한 42Alert 프로젝트
 date: '2021-12-29 14:30:00'
 author: seongsu
 tags: Node.js Express Slack Heroku
@@ -122,16 +122,16 @@ GMT +09:00 기준 08:00 ~ 24:00 동안 서버가 켜져있고<br/>
 
 - 42 Auth Token 발급
 
-```JS
-// eventToken에 42 Authorization Token이 담긴다.
+```TS
+import env from "@modules/env";
 
 const eventToken = await axios({
-        method: "post",
-        url: process.env.FT_TOKEN_URL,
+         method: "post",
+        url: env.ftConfig.apiUrl + "/oauth/token",
         params: {
             grant_type: "client_credentials",
-            client_id: process.env.FT_EVENT_UID,
-            client_secret: process.env.FT_EVENT_SECRET,
+            client_id: env.ftConfig.eventId,
+            client_secret: env.ftConfig.eventSecret,
         },
     });
 ```
@@ -140,84 +140,104 @@ const eventToken = await axios({
 
 <br/>
 
+`eventToken`에 `42 Authorization Token`이 담긴다.<br/>
+
+<br/>
+
 - Event API 호출
 
-```JS
-// axios 호출이 완료되면 newEvent 함수에서 DB 검증을 통해 새로운 이벤트를 반환해준다.
+```TS
+import env from "@modules/env";
 
 axios({
-    method: "get",
-    url: "https://api.intra.42.fr/v2/campus/29/events",
-    headers: { Authorization: `Bearer ${accessToken.eventToken}` },
-})
-    .then(async (value) => {
-        const newEventValue = await newEvent(value.data, "event");
-
-        if (newEventValue.length > 0)
-            newEventValue.map(async (event) => sendAlert(event, "event"));
+        method: "get",
+        url: env.ftConfig.apiUrl + "/campus/29/events",
+        headers: { Authorization: `Bearer ${token.eventToken}` },
     })
-    .catch((err) => {
-        console.log(err);
-        console.log("\x1b[31m[Event] - 42 API 호출에 실패하였습니다.\x1b[m");
-});
+        .then((value) => checkData(value.data, "event"))
+        .catch((err) => {
+            console.log(err);
+            console.log("\x1b[31m[Event] - 42 API 호출에 실패하였습니다.\x1b[m");
+        });
 ```
+
+<br/>
+
+axios 호출이 완료되면 `checkData` 함수에서 DB 검증을 통해 새로운 이벤트인 경우 저장 후 슬랙에 전송해준다.<br/>
 
 <br/>
 
 - 최신 이벤트인지 비교
 
-```JS
-// DB에서 PK값 기준 기존 이벤트를 가져온 후 새로운 이벤트와 PK 비교한다.
-// 새로운 이벤트들은 배열에 담아 반환해준다.
+```TS
+import { eventType } from "eventType";
 
-module.exports = async (data, flag) => {
-    const eventApi = data;
-    eventApi.sort((a, b) => b.id - a.id);
-    const nowEvent = flag === "event" ? await Event.findAll({}) : await Exam.findAll({});
-    nowEvent.sort((a, b) => b.dataValues.id - a.dataValues.id);
-
+const cursusValid = (event: eventType, flag: string) => {
+    // 테스트 목적으로 등록한 이벤트인지 확인하는 함수
     if (flag === "event") {
-        return eventApi.filter((event) => event.id > nowEvent[0].dataValues.id);
-    } else {
-        return eventApi.filter((event) => {
-
-            // 가끔 서울 캠퍼스 이벤트가 아니거나 테스트용으로 이벤트가 올라와서 예외처리를 해준다.
-            if (
-                event.cursus[0].slug === "42cursus" &&
-                event.name.indexOf("test") === -1 &&
-                event.location.indexOf("test") === -1
-            )
-                return event.id > nowEvent[0].dataValues.id;
-        });
+        return (
+            event["cursus_ids"][0] === 21 &&
+            event["campus_ids"][0] === 29 &&
+            event.name.indexOf("test") === -1 &&
+            event.description.indexOf("test") === -1 &&
+            event.location.indexOf("test") === -1
+        );
     }
+
+    return event.cursus[0].slug === "42cursus" && event.name.indexOf("test") === -1 && event.location.indexOf("test") === -1;
 };
+
+const isNewEvent = (recentEvent: Array<eventType>, nowEvent: Events | Exams, flag: string) => {
+    return recentEvent.filter((event) => cursusValid(event, flag) && event.id > nowEvent.id);
+};
+
+const newEvent = async (data: Array<eventType>, flag: string) => {
+    const recentEvent = data.sort((a: eventType, b: eventType) => b.id - a.id);
+    const eventRepo = getCustomRepository(EventRepo);
+    const examRepo = getCustomRepository(ExamRepo);
+    const nowEvent = flag === "event" ? await eventRepo.findOneEvent() : await examRepo.findOneExam();
+
+    return isNewEvent(recentEvent, nowEvent, flag);
+};
+
+export default newEvent;
 ```
+
+<br/>
+
+DB에서 PK값 기준 기존 이벤트를 가져온 후 새로운 이벤트와 PK 비교한다.<br/>
+새로운 이벤트들은 배열에 담아 반환해준다.<br/>
 
 <br/>
 
 - 최신 이벤트 Slack 전송
 
-```JS
-// 사실 슬랙으로 전송하는 로직은 간단하다.
-// 나중에 슬랙 API 사용법 포스팅을 해야것다
+```TS
+import { WebClient } from "@slack/web-api";
+import content from "@modules/content";
+import env from "@modules/env";
+import { eventType } from "eventType";
 
-const { WebClient } = require("@slack/web-api");
+const slack = (event: eventType, flag: string) => {
+    const web = new WebClient(env.slackConfig.token);
+    const channelName = env.slackConfig.channel;
 
-const web = new WebClient(process.env.SLACK_TOKEN);
-const channelName = process.env.SLACK_CHANNEL;
-
-const getText = require("./formatText");
-
-module.exports = (event, flag) => {
     web.chat
         .postMessage({
             username: "42Alert",
             channel: channelName,
-            // getText 함수는 직접 만들었는데 Slack에 이쁘게 전송하기 위해 문자열을 꾸며주는 함수다
-            text: getText(event, flag),
+            // content 함수는 직접 만들었는데 Slack에 이쁘게 전송하기 위해 문자열을 꾸며주는 함수다
+            text: content(event, flag),
         })
 }
+
+export default slack;
 ```
+
+<br/>
+
+사실 슬랙으로 전송하는 로직은 간단하다.<br/>
+나중에 슬랙 API 사용법 포스팅을 해야것다<br/>
 
 <br/>
 <br/>
@@ -260,7 +280,20 @@ module.exports = (event, flag) => {
 
 지금은 모두 끝나고 개운하긴 하지만 3개월이 지난 지금 다시 코드를 돌아보니 고칠 부분히 `상당히` 많은것 같다....<br/>
 처음 배우며 시작했던 프로젝트라 그런지 현재 하나도 마음에 들지 않는다ㅠ<br/>
-현재 하고있는 프로젝트가 마무리 되거나 도중에 시간이 나면 `TypeScript`를 적용해 전체 리팩토링을 해보려 한다 🤩<br/>
+~~현재 하고있는 프로젝트가 마무리 되거나 도중에 시간이 나면 `TypeScript`를 적용해 전체 리팩토링을 해보려 한다 🤩~~<br/>
+
+> 2022년 1월 1일 기념으로 리팩토링을 완료했다
+
+```Plain
+# 다음은 TS로 리팩토링을 하며 수정한 내용이다
+
+- 42 OAuth Token 조건부 발급 오류 처리
+- 핵심 로직 비동기 처리
+- 중복 코드 모듈화
+- 파일명 명시적으로 변경
+- ORM 변경 Sequelize -> Typeorm
+- import 절대경로 지정
+```
 
 <br/>
 
@@ -287,7 +320,7 @@ module.exports = (event, flag) => {
 
 <br/>
 
-> https://github.com/nfl1ryxditimo12/42Alert
+> https://github.com/nfl1ryxditimo12/42Notifier
 
 <br/>
 <br/>

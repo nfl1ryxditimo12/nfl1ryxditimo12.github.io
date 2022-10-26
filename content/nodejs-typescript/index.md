@@ -1,9 +1,9 @@
 ---
 emoji: 2️⃣
-title: Node.js Typescript 설정
+title: Node.js TypeScript 설정
 date: '2021-12-29 01:25:00'
 author: seongsu
-tags: Node.js Express Typescript
+tags: Node.js Express TypeScript
 categories: Node.js Express
 ---
 
