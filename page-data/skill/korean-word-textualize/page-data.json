@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-blog-template-js",
+    "path": "/skill/korean-word-textualize/",
+    "result": {"data":{"cur":{"id":"59114fc8-1a5f-5a0a-9e9b-bd4dedbe41de","html":"","excerpt":"","frontmatter":{"date":"October 16, 2022","title":"한국어 유니코드 분석으로 문장화 해보기","categories":"Node.js","author":"seongsu","emoji":"1️⃣6️⃣"},"fields":{"slug":"/skill/korean-word-textualize/"}},"next":{"id":"94f7adbc-6e01-5de4-9ab6-ec5ad4add288","html":"","frontmatter":{"date":"October 09, 2022","title":"Slack을 서버 오류 알림으로 사용해 보자","categories":"Node.js 기타","author":"seongsu","emoji":"1️⃣5️⃣"},"fields":{"slug":"/skill/slack-monitering/"}},"prev":null,"site":{"siteMetadata":{"siteUrl":"https://seongsu.me","comments":{"utterances":{"repo":"nfl1ryxditimo12/nfl1ryxditimo12.github.io"}}}}},"pageContext":{"slug":"/skill/korean-word-textualize/","nextSlug":"/skill/slack-monitering/","prevSlug":""}},
+    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
