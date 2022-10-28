@@ -82,4 +82,284 @@
         }
       }
     })
-  </script><title data-react-helmet="true">NestJS Socket session store</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="NestJS Socket session store"/><meta data-react-helmet="true" property="og:site_title" content="NestJS Socket session store"/><meta data-react-helmet="true" name="description" content="Seongsu&#x27;s Blog"/><meta data-react-helmet="true" property="og:description" content="Seongsu&#x27;s Blog"/><meta data-react-helmet="true" property="og:author" content="김성수"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-ffca7a5005d3c316f1d9.js"/><link as="script" rel="preload" href="/framework-0ca52d9912f86fd0bfc4.js"/><link as="script" rel="preload" href="/app-911ec9c16aea38400af5.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b35d36519d0e5047e72f.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-433bdb880ac74c211239.js"/><link as="fetch" rel="preload" href="/page-data/skill/socket-session-store/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">seongsu.me</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">1️⃣3️⃣</div><div class="info"><div class="categories"><a class="category" href="/posts/Node.js">Node.js</a><a class="category" href="/posts/NestJS">NestJS</a></div></div><h1 class="title">NestJS Socket session store</h1><div class="info"><div class="author">posted by <strong>seongsu</strong>,</div> <!-- -->Invalid date</div></header><div class="post-content"><div class="markdown"></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/skill/nestjs-aop/"><div class="direction">이전 글</div><div class="title">NestJS Interceptor를 이용한 횡단 관심사 분리</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/skill/latency-strategy/"><div class="direction">다음 글</div><div class="title">프랑스 - 한국 간 Latency 단축 전략</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nfl1ryxditimo12">seongsu</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/skill/socket-session-store/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5f5796b5cc7e557af05.js"],"app":["/app-911ec9c16aea38400af5.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0d19b91483ccbe548111.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a4d52df74927d7723f63.js"],"component---src-pages-about-js":["/component---src-pages-about-js-c6aba30b47fe5dc3af51.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d7d74f59dcc47f961428.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-433bdb880ac74c211239.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-561551115abc892160e3.js"]};/*]]>*/</script><script src="/polyfill-a5f5796b5cc7e557af05.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-433bdb880ac74c211239.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b35d36519d0e5047e72f.js" async=""></script><script src="/app-911ec9c16aea38400af5.js" async=""></script><script src="/framework-0ca52d9912f86fd0bfc4.js" async=""></script><script src="/webpack-runtime-ffca7a5005d3c316f1d9.js" async=""></script></body></html>
+  </script><title data-react-helmet="true">Session이란? JavaScript로 구현하는 Session</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="Session이란? JavaScript로 구현하는 Session"/><meta data-react-helmet="true" property="og:site_title" content="Session이란? JavaScript로 구현하는 Session"/><meta data-react-helmet="true" name="description" content="🌊 Session 이란? [출처] Wikipedia 쉽게 설명하자면 웹에선 가 사이트에 접속해 어느 위치에 있는지, 어떤 상호작용을 했는지 등 의 정보를 서버에 저장해 한 상태를 유지하는 개념이다.
+세션을 쿠키와 굉장히 헷갈려 하는데, 일단 쿠키는 에서 관리되고, 세션은 에서 관리된다. 세션은 쿠키처럼 가시적인 부분에 있는 것이 아니라 이해하기 힘든데, 서버에 파일, 메모리, DB등 어디에든 저장되어 의 상태 관리를 하는 개념이다.
+추상적인 개념이지만, 사용자가 사이트에 접속해 나가기 전 까지 서비스에 따라 사용자의 데이터를 서버에서 관리하는 것이다. 🤝 Session을 유지시키는 방법 프레임워크 내부 를 사용하는 방법이 제일 편하고, 사용하기 쉽지만, 이번엔 다른 방법으로 세션을 구현해 보려 한다. 💾 세션을 구현하기 위한 다양한 방법  위와 같은 게임 데이터가 있다고 가정을 해보고 세션 설계를 진행해 보자.
+일단 를 사용하는 방법, 를 이용하는 방법이 있다. 서비스 요구사항에 …"/><meta data-react-helmet="true" property="og:description" content="🌊 Session 이란? [출처] Wikipedia 쉽게 설명하자면 웹에선 가 사이트에 접속해 어느 위치에 있는지, 어떤 상호작용을 했는지 등 의 정보를 서버에 저장해 한 상태를 유지하는 개념이다.
+세션을 쿠키와 굉장히 헷갈려 하는데, 일단 쿠키는 에서 관리되고, 세션은 에서 관리된다. 세션은 쿠키처럼 가시적인 부분에 있는 것이 아니라 이해하기 힘든데, 서버에 파일, 메모리, DB등 어디에든 저장되어 의 상태 관리를 하는 개념이다.
+추상적인 개념이지만, 사용자가 사이트에 접속해 나가기 전 까지 서비스에 따라 사용자의 데이터를 서버에서 관리하는 것이다. 🤝 Session을 유지시키는 방법 프레임워크 내부 를 사용하는 방법이 제일 편하고, 사용하기 쉽지만, 이번엔 다른 방법으로 세션을 구현해 보려 한다. 💾 세션을 구현하기 위한 다양한 방법  위와 같은 게임 데이터가 있다고 가정을 해보고 세션 설계를 진행해 보자.
+일단 를 사용하는 방법, 를 이용하는 방법이 있다. 서비스 요구사항에 …"/><meta data-react-helmet="true" property="og:author" content="김성수"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-ffca7a5005d3c316f1d9.js"/><link as="script" rel="preload" href="/framework-0ca52d9912f86fd0bfc4.js"/><link as="script" rel="preload" href="/app-911ec9c16aea38400af5.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b35d36519d0e5047e72f.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-433bdb880ac74c211239.js"/><link as="fetch" rel="preload" href="/page-data/skill/session/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">seongsu.me</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">1️⃣3️⃣</div><div class="info"><div class="categories"><a class="category" href="/posts/Node.js">Node.js</a></div></div><h1 class="title">Session이란? JavaScript로 구현하는 Session</h1><div class="info"><div class="author">posted by <strong>seongsu</strong>,</div> <!-- -->September 30, 2022</div></header><div class="post-content"><div class="markdown"><h2 id="-session-이란" style="position:relative;"><a href="#-session-%EC%9D%B4%EB%9E%80" aria-label=" session 이란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🌊 Session 이란?</h2>
+<br>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">반영구적이고 상호작용적인 정보 교환을 전제하는 둘 이상의 통신 장치나 컴퓨터와 사용자 간의 대화나 송수신 연결상태를 의미하는 보안적인 다이얼로그(dialogue) 및 시간대를 가리킨다. 따라서 세션은 연결상태를 유지하는 것보다 연결상태의 안정성을 더 중요시 하게 된다.</code></pre></div>
+<blockquote>
+<p>[출처] <a href="https://en.wikipedia.org/wiki/Session_(computer_science)">Wikipedia</a></p>
+</blockquote>
+<br>
+<p>쉽게 설명하자면 웹에선 <code class="language-text">Client</code>가 사이트에 접속해 어느 위치에 있는지, 어떤 상호작용을 했는지 등 <code class="language-text">Client</code>의 정보를 서버에 저장해 <code class="language-text">Stateful</code>한 상태를 유지하는 개념이다.<br>
+세션을 쿠키와 굉장히 헷갈려 하는데, 일단 쿠키는 <code class="language-text">Client side</code>에서 관리되고, 세션은 <code class="language-text">Server side</code>에서 관리된다.<br></p>
+<br>
+<p>세션은 쿠키처럼 가시적인 부분에 있는 것이 아니라 이해하기 힘든데, 서버에 파일, 메모리, DB등 어디에든 저장되어 <code class="language-text">Client</code>의 상태 관리를 하는 개념이다.<br>
+추상적인 개념이지만, 사용자가 사이트에 접속해 나가기 전 까지 서비스에 따라 사용자의 데이터를 서버에서 관리하는 것이다.<br></p>
+<br>
+<h2 id="-session을-유지시키는-방법" style="position:relative;"><a href="#-session%EC%9D%84-%EC%9C%A0%EC%A7%80%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label=" session을 유지시키는 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🤝 Session을 유지시키는 방법</h2>
+<br>
+<p>프레임워크 내부 <code class="language-text">세션 라이브러리</code>를 사용하는 방법이 제일 편하고, 사용하기 쉽지만, 이번엔 다른 방법으로 세션을 구현해 보려 한다.<br></p>
+<br>
+<h3 id="-세션을-구현하기-위한-다양한-방법" style="position:relative;"><a href="#-%EC%84%B8%EC%85%98%EC%9D%84-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%B0%A9%EB%B2%95" aria-label=" 세션을 구현하기 위한 다양한 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💾 세션을 구현하기 위한 다양한 방법</h3>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACKklEQVQoz1WT62sTURDF888LfhGrlKKIiIIPKLRV1A9WsPWRllY0tYlF27R5NJu7u9m77+fdzU/uDY3th9kZuMOZM+fMtqqqQilFrZTJTa2I05xL22fi+FhuQFkuenTv9eicTtjt9Nn52afdHZi+lm4sq4osL0iynHlT0zmzWNncN3F/a5+JG1DX9TJgjhskvNw55vH2EY8+dHj6sWMwWhpAs7iz/oVbL3boDR3iJMGVkiCKEY5DkGQ4fsLppUtvYPNn5DJ0Ii5sDyfOmKUlTpQa1i29ql7xV3/MX2uGJRPiOMYWgiAIsCyLSinavSEP3h3yZPuItbcHDGwfx53hzjycmYewHapK0aJpmHoh9za+cfvVLicjB1VVJElCnuekaUpeVoxtj+7FhJEXcy48w9h1XQLfN4O92ew/Q1tG7PX6dC4EIzdcmFTXJhujmoavxwPube6x+uaAuxtto6EGDMPQAOraAOZ5wfPtH6xt7bGy/pmzS5d50yyd1GyLUjFxPPoTgZ9XCD9CRilTIZBSmhBCmOEt7XDfchjLmIHrM5Wx0UKp6yeiGNuSw98Dvp8M2e9eECaZkSPLMiONzoah/oymNkKGTD2fKMlu3JweOJ/rlc9Zfd3m2acuD98fIrzISKF7542WaCGPAZSeRxSG+FJSFsUS8CprndM8x49TMlWTFBVZUZr3oqyQUbkkYAD1hS+ivAF0vb76m67qhXH65EqOBylukBMmJf8AJew4ynevXGEAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="diagram"
+        title="diagram"
+        src="/static/99143014b8d47b2d54c4c9a1ed2973f4/37523/diagram.png"
+        srcset="/static/99143014b8d47b2d54c4c9a1ed2973f4/e9ff0/diagram.png 180w,
+/static/99143014b8d47b2d54c4c9a1ed2973f4/f21e7/diagram.png 360w,
+/static/99143014b8d47b2d54c4c9a1ed2973f4/37523/diagram.png 720w,
+/static/99143014b8d47b2d54c4c9a1ed2973f4/302a4/diagram.png 1080w,
+/static/99143014b8d47b2d54c4c9a1ed2973f4/35252/diagram.png 1204w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>위와 같은 게임 데이터가 있다고 가정을 해보고 세션 설계를 진행해 보자.<br>
+일단 <code class="language-text">Third-party DB</code>를 사용하는 방법, <code class="language-text">서버 힙 메모리</code>를 이용하는 방법이 있다.<br></p>
+<br>
+<p>서비스 요구사항에 다르겠지만, 영속성이 보장되어야 하는 서비스의 경우 <code class="language-text">Third-party DB</code>를 사용하면 좋을 것 같고, 그 중 <code class="language-text">Update</code>가 빈번히 일어나는 설계가 된다면 <code class="language-text">RDB</code>를 이용해 구현하면 좋을 것 같다.<br>
+이외의 상황이라면 <code class="language-text">In-memory DB</code> 또는 <code class="language-text">Disk-based DB</code>의 <code class="language-text">noSQL</code>을 사용할 것 같다.</p>
+<blockquote>
+<p>noSQL은 데이터의 구조가 클 때, <code class="language-text">Update</code>가 빈번히 일어나면 성능상 좋지 않다.</p>
+</blockquote>
+<br>
+<p>만약 영속성 보장이 필요없는 서비스거나, 빠른 개발을 목적으로 한다면 <code class="language-text">서버 힙 메모리</code>에서 세션을 관리하면 좋을 듯 하다.<br></p>
+<br>
+<h2 id="-메모리로-세션을-유지하는-방법" style="position:relative;"><a href="#-%EB%A9%94%EB%AA%A8%EB%A6%AC%EB%A1%9C-%EC%84%B8%EC%85%98%EC%9D%84-%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label=" 메모리로 세션을 유지하는 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>📱 메모리로 세션을 유지하는 방법</h2>
+<br>
+<p><code class="language-text">JavaScript</code>의 자료구조를 적절히 이용하여 세션을 유지해보자.<br>
+자료구조와, <code class="language-text">JavaScript</code>의 Argument 전달 전략을 적절히 섞으면, 메모리 유실 없이 <code class="language-text">Client</code>의 세션을 유지시킬 수 있다. 이 때, <a href="https://en.wikipedia.org/wiki/Evaluation_strategy">평가 전략</a>인 Call by sharing을 이용하고, <a href="https://en.wikipedia.org/wiki/Hash_table">Hash Table</a>을 사용하는 자료구조인 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#same-value-zero_equality">Map</a>을 사용할 예정이다.<br></p>
+<br>
+<h3 id="-call-by-sharing-이란" style="position:relative;"><a href="#-call-by-sharing-%EC%9D%B4%EB%9E%80" aria-label=" call by sharing 이란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>📞 Call by sharing 이란?</h3>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB/UlEQVQoz3VSia6iUAzl/z/KUcfEgScOKgqIC3JZBNlEwQXwvLRvfMlMMk2ahh56255Tqb7dcK0qbDYb2LYNIQTu9zvK8oKqrpEXBUzTZNwwTBRFgev1ylh4PMKyLJimBdcVqOsa0ukYIfR8OHsH2+0Wu+0OZVni+XyiyHLGKE++XttIkgRt2yJLEgTCw26342aO46CqKkibuQ5L1aBNp5AVGbquw3Vd3O53BPsD9LEC7beG6XQKRVE40nQHy8bqQ8VkMoEsyzAMg4eQXCHghyGatkXTNOi6Dm+LkxP2B4dXoXzTtBxfrxeCMITjHhBFEQ8QhiFPLgnXReb6SAWtvefViBfiKo9iJHvBdKxtm/NxHDOHfhAgdgQS8UUJ5W+3G6ThYICf/QEmygfG4zGPPxqNkOc5LNPE8Eef85qmfXN5Ppf8Pez3QfW9Xg+r1QqXywUSker7Pqq64gQ5TUBO4pSXC0fqThzRBRAFi8UCv2QZK8NgYagRrS9RIT2SJinSNGUV6YHH48GRVs+yDKfTif18PjOWJCmOxyOyNGN1yektiSSfz+cIguC7mAAyKpjNZswPNSMa3pjneZioKrT5nNdXVZXPRyJlaZV/jZT8H0a2XC6hyDIc3YC1WOLgutxUev/QdS8+ifdZvOMX1v3llI7iGJ7w0D6ewJ//yD4Bp5EyPFX4jCwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="call by .."
+        title="call by .."
+        src="/static/7ca7d8abb85e50cc1b302eafa47efcee/37523/call_by.png"
+        srcset="/static/7ca7d8abb85e50cc1b302eafa47efcee/e9ff0/call_by.png 180w,
+/static/7ca7d8abb85e50cc1b302eafa47efcee/f21e7/call_by.png 360w,
+/static/7ca7d8abb85e50cc1b302eafa47efcee/37523/call_by.png 720w,
+/static/7ca7d8abb85e50cc1b302eafa47efcee/302a4/call_by.png 1080w,
+/static/7ca7d8abb85e50cc1b302eafa47efcee/b1584/call_by.png 1342w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<blockquote>
+<p>[출처] <a href="https://www.educative.io/answers/what-is-call-by-sharing">What is call by sharing?</a></p>
+</blockquote>
+<br>
+<p>자료구조를 알아보기 앞서, JavaScript의 특별한 매개변수 전달 전략에 대해 설명하려 한다.<br>
+Call by sharing이란, <code class="language-text">Strict binding strategies</code>에 속해있는 Call by value와 Call by reference를 섞은<code class="language-text">평가 전략</code>이라고 한다.<br>
+전달되는 인자 자체는 <code class="language-text">Call by value</code>로 작동하지만, 인자 내부의 값은 <code class="language-text">Call by reference</code>로 작동한다. 즉 전달되는 인자는 <code class="language-text">복사</code>되어 전달되지만 인자가 가르키는 객체 내부의 주소는 공유가 되는 형식이다.<br></p>
+<br>
+<p>이러한 <code class="language-text">얕은 복사</code>가 일어나는 것을 명심해서 코드를 작성해야 하고, <code class="language-text">깊은 복사</code>를 원한다면, 클래스의 복사생성 전략을 사용하던지, 메모리를 새로 할당해서 직접 저장하는 방식을 택해야 한다.<br></p>
+<br>
+<h3 id="-map-자료구조" style="position:relative;"><a href="#-map-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0" aria-label=" map 자료구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🗺 Map 자료구조</h3>
+<br>
+<p><code class="language-text">JavaScript</code>의 Map 자료구조는 <code class="language-text">Hash Table</code> 알고리즘으로 구현되어 있다.<br>
+간략히 설명해보면, key를 구현된 <code class="language-text">Hash Function</code>으로 해싱을 하고, 인덱스로 활용하는 방식이다.<br>
+해싱을 진행할 때 알고리즘이 제일 중요시 되며, Result가 중복되는 Index일 수 있어, <code class="language-text">Collision</code>에 대해서도 잘 대응을 해야한다.<br></p>
+<br>
+<p>해싱 알고리즘에 따라 다르지만 key 해싱이 된 후엔 평균 O(1)의 시간 복잡도를 가진다.<br></p>
+<blockquote>
+<p>해싱된 Index에 Value를 넣기만 하면 돼서 최선의 경우 O(1)이지만, 해싱된 Index의 충돌 등 최악의 경우 O(N)까지 복잡도가 커진다.</p>
+</blockquote>
+<br>
+<h3 id="-hash-table의-collision-관리" style="position:relative;"><a href="#-hash-table%EC%9D%98-collision-%EA%B4%80%EB%A6%AC" aria-label=" hash table의 collision 관리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🤔 Hash Table의 Collision 관리</h3>
+<br>
+<p><code class="language-text">Collision</code>을 해결하기 위한 여러 전략이 있는데 이 중 <code class="language-text">Separate chaining</code>과 <code class="language-text">Open Addressing</code>의 <code class="language-text">Linear probing</code>에 대해서만 간단히 설명하겠다.<br></p>
+<br>
+<blockquote>
+<p>Separate chaining (분리 연결법)</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 68.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEAElEQVQ4y11UbUxbVRh+oLS04nRlMFAwDqbRqASzuKBmMWM6F7JFqQQCBUNVMuq6xI1Mevt528stFASlE5aIgFPWTaJksxspZMtW+kEZUGjZdZRGCrXAEFjCh/uMyzXXj/3YSU7Omyfved6T93neAzyyhELhw5hl2YexQCBAviEfSpfy0Sso/KIQ5hkzdD7df0h8/Bbw+SnIyuIlAOABiEPc//mbACTy+YLE7HezUWAu4LAYAFsBpANIyCnNQetGK/KIPAAVFVzCUwBeBBALuQLJaekxHGv3xdZdOlOV4lClohxAEpeYX5OP7PeyBaInRc/F8mJfBpDK4XsO74n5t/6dO/FgWQFYlse7e1fEncfqzdicHhffYwvYzw4MrZwc6zwHIFnv09vqput8hgmDxzBhcDZEGgbMYbNbN6rzaEe0jClkagTW15swM+PH7KwD8/P+pI0/9/7TuacT0850M26r3c02XW7wctDBHw4+K+uUZRY1FmVITJLMEktJpqxDllncXJwh/Vq6XdYhSwE2NnYgGs1DKPQOlpf3vdDbm0EA4hQAvhn7Pqe/t8JmO/8BAP7RvqOk8ZrxhHZYa1F71ccphjpuZIzH9eP6Zs2w5lsjY6wEbt9WYXbWhlDoFG7csGFtdRcLxHGvdE6NVFwac9T29P0s53ola5cdMU2ZPiXHSbl+XC83hUxyOkjLST9ZSfrJz0xTpjzg/v08rKwosLT0CW7dOgyW3caRrSRuSp9UKAYdjSq21vvlIGchWYes1DBheJ8MkPtJP3mA2xRDHdCP6fdrhjUSiqF2Ag8efIxw2AKGMWFpqRlz8zvDQMIbicLnT1dfvNTW0r1eNXjEzhFSDNWoH9P/pHQrTxFuwqod0Vqp65SVcBNdSpfyHB2kjwGrq2WIROoQieiwsFC7zed77SMgGa+/Krjy6+R3fWNDjLW/qxuASKKRJMk6ZeICc4FY2iIVl7eXi0ssJeLS1lJx2YmyLRJa8jinchEiERLR6OeYmyMTotFXYoHNnKrBxR8z+h0dO063db/E3xqXqvaqB8wz5im1V31N7VVzNmHoIM1ormoCmmHN73SQbuV8KEcw2IbR0SYsLn6DP5ZyOEWxPe0JuyNw1uZyLZx0dv7SYv8KPWyPoLi5WGQOm4V0kBZKW6TC8vZyIeknhbW/1YpKLCUCTpS3sLxchoWFQqytfchj2WdiuRkWC1K7rJPe7y942CZP/QDnTO2w9kz9bP1l7Yi2j/AQ/XXTdf0112v6NVc1dpVX5aEnaQq4dw+YnwfCYeDmTe5HAP5igccSMDo9dMgVcFjOX7lQxY0l4STepBjqbdWgane1szrXEDDk6ny6XMJD7Fa6lHt1o7qsvwExk9YuECz3eAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="separate_chaining"
+        title="separate_chaining"
+        src="/static/f818db27035ddf89cfe8e624d936c277/37523/separate_chaining.png"
+        srcset="/static/f818db27035ddf89cfe8e624d936c277/e9ff0/separate_chaining.png 180w,
+/static/f818db27035ddf89cfe8e624d936c277/f21e7/separate_chaining.png 360w,
+/static/f818db27035ddf89cfe8e624d936c277/37523/separate_chaining.png 720w,
+/static/f818db27035ddf89cfe8e624d936c277/1cfc2/separate_chaining.png 900w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>동일 해싱 Index인 경우 해당 인덱스에 <code class="language-text">Linked list</code> 형식으로 나열하는 충돌 관리 기법이다.<br>
+bucket에 해당 key의 <code class="language-text">해싱된 Index</code>가 보장될 수 있지만, 동일 인덱스 데이터가 많아질 경우 특정 데이터를 찾을 때 성능을 보장할 수 없다.<br></p>
+<br>
+<blockquote>
+<p>Linear probing (선형 탐색법) | Open Addressing (개방 주소법)</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 86.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEqklEQVQ4y3WUbUxTVxjH/8CyZW9G59S9ufiaOTEMX7ZlH/Zhk/jBD4v7aOacmiUzZsk+OM3ckBUcRiiIQicbIqTY0gpu0QEKtJTSW25pbW+5F9pe2nvbS7tOQVFAC8wCz3JxLn7ZSf55nnNynl+e55zzHOB/hjgiwuazwe63ZzS3N2f1hfoyxREx69bftzKJCE8og4/zWdKYpO7JeBy/DMCHAN56vEB0B0d+/DojOuFDa68BwSiH4UR8AQJgPYC3AWwFsNTBOpCmNEKh0EIkcOjQ01i/fjGys1+EJGWumZrCleafM6vqyjB0u/8DO39d6+KZQn5I0AeigQt9fJ/Z4XZc6ujuaPIGvMaQEqrhw3yTzWn75BHQbgfMZqCxERAErJqZUTPJVFOpaeg5ajIHx02eTrlBqqeLooEuihfJpJjIKBvJEDaQPqhfUK1QWwzMzW1HLPYLZFkLUSxHMlmxJJXKJkA9j+dqjT1HjWbhfpPXqhilBmocMpEhZCBz1EzGiJFMERMZRSMZRAPVCXUngYcPVWA1kslSKEo5bt8+vSEczi0AXhLOFUC+eWOzw996zMX3fMMF/WVciNMKEaHEF/Cd6vX2nlJ9LsSV+EV/laXHkqeWnIPx8YNIJr+AJO1HKrUfHs+6WmCZTatBL8282Tka2Wkb9O5w9jn2dDG2z50e52eMm9lttVt3q761x7rH6XHuu9p2dRMwP/8pksl2yLIZkUgzxsZ+x8zMNgIytcBTA5fqDvc2nJ/uZn9LtMntZIl2UofcQe1SO7UNtZElaiGLYlmYX+6/fErNcBUmJnYiHt+OZDIPqdQOEC1VH4cNWBHL2XAsvHL1X826vQNHwhoqDBQ8zBfy05ohTfpE9ET6+OBxVdP5Qj4VhguPq8C9GBsLIBJhIEksJifdiMc/JuB5D7DYu2vfYedH+0aN5vzB/FgRFQU0aU1QM1scLZ4tSZbMFoWLZgvFwhlNSEMnYycLgKmpFRgbexeTk7kYGdmMdDp3bX39cn3ms2uL3YTGjtTBX+uTDy74rLIucoYqfGeogqugGqWGquVqOiucpapAFVUOVFJloPInYHb2ACRJRiTiQTDIQVH6X1WUvH7gZbo7gEDCv8vu6+zoHWCafTI3KAwLHD/M+32Sz88Osn4hLvh5hb/ByZxi9Vi/UktejqmpLXjwIAdE76ja6XYv+RZYrrZZ/5Bt0R+OxnVX2i+vbTQ3btFV697XG/RbTU2mXL1Bn9tgaNiqO6d7z9xk3lZdU/2KCvwSyWQCHOdHf/8A7t0LrhwdzVNvWQXeGBrc2+Fk5O4Bxs0qvdPuhHvcnXBPsDF2olvsnvD86ZlwJ9x32BhL13zXvlOBL4DoDRC9tqC5uddB9My/f8SSktPd39dWKzfPe66LZ+QyKvVpqZQrJV1MR5VSJZXxZaTltfMlvhIqD5YXPurlJzU/v2CtYjDL4naBHeQPXHMww12Cw+eMMXOuuGvKFXdNO6PO6a5Q13Rfom/aFXfdd0ad1Opt/eExKOM/zc+rFqPhFtyhECJ3PYuUlHc1y9nX9Ngdm1wudiPLstkMw2RbrdZsl8uVzbLsRoZhclpaWpb9A1M0KH+zDnNBAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="linear_probing"
+        title="linear_probing"
+        src="/static/1d1cc25fcb9acca58e138d55ed410977/37523/linear_probing.png"
+        srcset="/static/1d1cc25fcb9acca58e138d55ed410977/e9ff0/linear_probing.png 180w,
+/static/1d1cc25fcb9acca58e138d55ed410977/f21e7/linear_probing.png 360w,
+/static/1d1cc25fcb9acca58e138d55ed410977/37523/linear_probing.png 720w,
+/static/1d1cc25fcb9acca58e138d55ed410977/3c051/linear_probing.png 760w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>동일 해시 인덱스 삽입 시 <code class="language-text">bucket의 다음 인덱스</code>에 데이터를 삽입하는 방법이다.<br>
+하지만 <code class="language-text">Primary clustering에 취약</code>하다는 단점이 있다. 이 기법 역시 데이터가 많아진다면 복잡도가 높아질 수 있다.<br></p>
+<br>
+<p>위와 같이 <code class="language-text">Chaining</code>과 <code class="language-text">Open Address</code>기법을 이용한 <code class="language-text">Hash table collision</code> 해결에 대해 알아보았다.<br>
+Node.js의 충돌 해결 기법은 위 방식에서 어떤 방식을 사용하는지 소스코드를 뜯어봐도 찾기 힘들었지만, JavaScript의 Map 자료구조가 어떤 식으로 생겼는지 알아본 계기로만 하고, 본론으로 돌아와서, 메모리에 <code class="language-text">Session</code>을 구현해보자.<br></p>
+<br>
+<h2 id="-session-구현" style="position:relative;"><a href="#-session-%EA%B5%AC%ED%98%84" aria-label=" session 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🧑‍💻 Session 구현</h2>
+<br>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">BaseSessionStore<span class="token operator">&lt;</span><span class="token constant">T1</span><span class="token punctuation">,</span> <span class="token constant">T2</span><span class="token operator">></span></span> <span class="token punctuation">{</span>
+  <span class="token keyword">protected</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map<span class="token operator">&lt;</span><span class="token constant">T1</span><span class="token punctuation">,</span> <span class="token constant">T2</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token function">get</span><span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token constant">T1</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T2</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token function">set</span><span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token constant">T1</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token constant">T2</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<blockquote>
+<p>JavaScript의 경우 타입이 없으니 타입 지정을 빼고 구현하면 된다.</p>
+</blockquote>
+<br>
+<p>우선, <code class="language-text">BaseSessionStore</code> 클래스를 제작해 주고, <code class="language-text">Generic Type</code> T1, T2를 받아와 준다.</p>
+<blockquote>
+<p><code class="language-text">Generic Type</code>이란, 범용 타입이다. 변수 혹은 클래스 생성 시, 정해준 타입으로 컴파일 시 적용된다.</p>
+</blockquote>
+<br>
+<p>위와같은 보일러 클래스를 Domain 별로 사용하기 위해, 상속을 통해 Domain 별 세션 클래스를 제작할 수 있다.<br></p>
+<br>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">UserSessionStore</span> <span class="token keyword">extends</span> <span class="token class-name">BaseSessionStore<span class="token operator">&lt;</span><span class="token builtin">number</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token operator">></span></span> <span class="token punctuation">{</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getAllUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<br>
+<p>위와같이 <code class="language-text">BaseSessionStore</code>를 상속받아 구현 된 <code class="language-text">UserSessionStore</code>가 있다.<br>
+key는 number, value는 string으로 설정하였다.<br></p>
+<br>
+<h3 id="-session-store-클래스-사용" style="position:relative;"><a href="#-session-store-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%82%AC%EC%9A%A9" aria-label=" session store 클래스 사용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🦿 Session Store 클래스 사용</h3>
+<br>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token operator">...</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserSessionStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">const</span> userSessionStore <span class="token operator">=</span> <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'./userSessionStore.ts'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// or</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> userSessionStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./userSessionStore'</span><span class="token punctuation">;</span></code></pre></div>
+<br>
+<p>일단 Map 자료구조를 이용한 클래스 생성은 알겠으니, 실제 프로덕트에 적용시켜 본다면 Node.js의 <code class="language-text">require</code> 또는 <code class="language-text">import</code>를 사용하여 캐싱된 모듈을 불러오는 식으로 생성된 클래스를 이용할 수 있다.<br></p>
+<br>
+<p>프레임워크에서 IOC를 지원한다면 <code class="language-text">Dependency Injection</code>을 사용하여 클래스를 싱글톤으로 유지해 사용하는 방법이 있다.<br></p>
+<br>
+<p>두 경우 객체 내부 메모리는 공유되는 <code class="language-text">Call by sharing</code>기법이 적용되어 객체 내부 데이터를 잃지 않고 유지할 수 있다.<br>
+이러한 방법을 통해 <code class="language-text">Session</code>을 구현해 봤으며, 적절히 필요에 따라 사용하면 될 듯 하다.<br></p>
+<br>
+<h2 id="-참고-자료" style="position:relative;"><a href="#-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C" aria-label=" 참고 자료 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>📚 참고 자료</h2>
+<blockquote>
+<p>Evaluation strategies</p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy">https://en.wikipedia.org/wiki/Evaluation_strategy</a></li>
+</ul>
+<br>
+<blockquote>
+<p>Hash Table Algorithm</p>
+</blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hash_table">https://en.wikipedia.org/wiki/Hash_table</a></li>
+<li><a href="https://nlp.chonbuk.ac.kr/AL/ch06.pdf">https://nlp.chonbuk.ac.kr/AL/ch06.pdf</a></li>
+</ul>
+<br/>
+<br/>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#-session-%EC%9D%B4%EB%9E%80">🌊 Session 이란?</a></p>
+</li>
+<li>
+<p><a href="#-session%EC%9D%84-%EC%9C%A0%EC%A7%80%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B0%A9%EB%B2%95">🤝 Session을 유지시키는 방법</a></p>
+<ul>
+<li><a href="#-%EC%84%B8%EC%85%98%EC%9D%84-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%B0%A9%EB%B2%95">💾 세션을 구현하기 위한 다양한 방법</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#-%EB%A9%94%EB%AA%A8%EB%A6%AC%EB%A1%9C-%EC%84%B8%EC%85%98%EC%9D%84-%EC%9C%A0%EC%A7%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95">📱 메모리로 세션을 유지하는 방법</a></p>
+<ul>
+<li><a href="#-call-by-sharing-%EC%9D%B4%EB%9E%80">📞 Call by sharing 이란?</a></li>
+<li><a href="#-map-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0">🗺 Map 자료구조</a></li>
+<li><a href="#-hash-table%EC%9D%98-collision-%EA%B4%80%EB%A6%AC">🤔 Hash Table의 Collision 관리</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#-session-%EA%B5%AC%ED%98%84">🧑‍💻 Session 구현</a></p>
+<ul>
+<li><a href="#-session-store-%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%82%AC%EC%9A%A9">🦿 Session Store 클래스 사용</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C">📚 참고 자료</a></p>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/skill/nestjs-aop/"><div class="direction">이전 글</div><div class="title">NestJS Interceptor를 이용한 횡단 관심사 분리</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/skill/latency-strategy/"><div class="direction">다음 글</div><div class="title">프랑스 - 한국 간 Latency 단축 전략</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nfl1ryxditimo12">seongsu</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/skill/session/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5f5796b5cc7e557af05.js"],"app":["/app-911ec9c16aea38400af5.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0d19b91483ccbe548111.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a4d52df74927d7723f63.js"],"component---src-pages-about-js":["/component---src-pages-about-js-c6aba30b47fe5dc3af51.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d7d74f59dcc47f961428.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-433bdb880ac74c211239.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-561551115abc892160e3.js"]};/*]]>*/</script><script src="/polyfill-a5f5796b5cc7e557af05.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-433bdb880ac74c211239.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b35d36519d0e5047e72f.js" async=""></script><script src="/app-911ec9c16aea38400af5.js" async=""></script><script src="/framework-0ca52d9912f86fd0bfc4.js" async=""></script><script src="/webpack-runtime-ffca7a5005d3c316f1d9.js" async=""></script></body></html>
