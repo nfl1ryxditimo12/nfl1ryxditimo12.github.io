@@ -331,6 +331,160 @@
 <p>그리하여 직접 HTTP 통신을 해 예약을 진행하는 방식을 택했다.<br>
 그리고 정말 다행히도 옛날 서버라 그런지 소스코드들이 그대로 보여 통신을 분석하기 쉬웠고, 포스트맨을 붙잡고 늘어지며 하루 밤새서 예약 성공을 하게 됐다.<br></p>
 <br>
+<h3 id="-복잡한-프로세스를-간편화하기-위한-전략" style="position:relative;"><a href="#-%EB%B3%B5%EC%9E%A1%ED%95%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EB%A5%BC-%EA%B0%84%ED%8E%B8%ED%99%94%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%A0%84%EB%9E%B5" aria-label=" 복잡한 프로세스를 간편화하기 위한 전략 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🤔 복잡한 프로세스를 간편화하기 위한 전략</h3>
+<br>
+<p>일단 해당 사이트에서 <code class="language-text">Client - Server</code>간 통신이 어떻게 이뤄지는지 확인해야 했다.<br>
+그러기 위해 Ajax요청이 일어나는 부분의 <code class="language-text">JavaScript</code>파일을 계속 들여다 봤고, <code class="language-text">x-www-form-urlencoded</code>라는 <code class="language-text">Content-Type</code>을 사용해 서버에 요청을 하고 세션 기반 사용자 인증이 진행되는 것을 알게 되었다.<br></p>
+<br>
+<blockquote>
+<p>지피지기면 백전백승이다.</p>
+</blockquote>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAB7CAAAewgFu0HU+AAABcUlEQVQoz31TW47CMAzs/Y+zB+AIFVdAWkD0lT7zcJrOalxSYD+w5DqSncnY4xYAME0THo8H2rbVM30cRwzDAIkJG77btr0qCn7meUbTNGjqGufzGWVZYp4nDOOEn3LGb+Mw9h06YzR3Op1wuVwQY0RK6QNUAYP36PseIQSIhKNwXVf4ILDOKfu6rrEsC5xzmiPIf1dAgtFpBMtJgjKKCJqmxe120zF8s6PlcZoUjAy898qWMQM7Z7FYC2utPrB3Ix/OuiKLcr/f1bMY/TDAmP5gWVU1rtdf1FWlea3pe3Rmn23bGQUtcpvhyYZnMiaTIHEfOAAfAqKIzo7GuNcErCkhrm+iENlap4Bsk8OnCGw/G/MUg4wTxXoKSVfg4F+i8DWC5vNMJb3/WAfvgwJmxkFEO+Es3xU/GDLJyEthWbBaixTjwTAvOwGS9xC7i/S+3Acg6bM9zk/VIlsRbHz5ecEYo39TRVHaFu65GSSQt4KAf5uOWMN/Fcg+AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="reservation login"
+        title="reservation login"
+        src="/static/f8e6963176650267925c17478a61a7f4/37523/reservation_login.png"
+        srcset="/static/f8e6963176650267925c17478a61a7f4/e9ff0/reservation_login.png 180w,
+/static/f8e6963176650267925c17478a61a7f4/f21e7/reservation_login.png 360w,
+/static/f8e6963176650267925c17478a61a7f4/37523/reservation_login.png 720w,
+/static/f8e6963176650267925c17478a61a7f4/302a4/reservation_login.png 1080w,
+/static/f8e6963176650267925c17478a61a7f4/07a9c/reservation_login.png 1440w,
+/static/f8e6963176650267925c17478a61a7f4/4ea1e/reservation_login.png 2667w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>우선 세션 id를 발급받기 위해 로그인을 진행했다.<br>
+원래는 <code class="language-text">세션 id</code>만 발급받으면 바로 예약 신청이 되는 줄 알았는데, 계속 예약 신청 응답이 실패해서 알아보니, 서버에서 <code class="language-text">사용자가 방문한 페이지를 추적</code>해서, 정상적인 경로로 접근하지 않은 경우 오류를 내는 것이였다.<br></p>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAB7CAAAewgFu0HU+AAABQklEQVQoz5WT62qEQAyF9/3fp89hfwvCiuD97uh4G085cSO2WygdiI6Tk88kxgcADMOALMvE2raV577vxZxz+M968DKOI6qqQhLH8DxP9id0wLLMmOyMj0+DsrMYzYDBGEzTJGaMES0Zx3GcwGVZxOn2Dfu+Y55nrOuKbdvkThvtgl4qSVGWJZ7PJ3zfR9d1EiPxzp1ADeIb9m0TII0vopjn2pq6riU4jmOEYSgaLmvtdyBTn619lTIKkDCKFEgNjXr69fwNyLSbphEHNYQSxnUHMihJEukx9zy/+y4gYfyiCtDy78alpXIa0jSVRH7NkEB18pAf48z2eMsiiiIxgoMguCphCy4gG60l85CNLopCMlWwjlee56Llnv3knTqd2auHhErwq2RCKbj3kNkw+/s4qVF/zaEKtbz73/Gz7L/+lC814FqQsbAP/QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="reservation step"
+        title="reservation step"
+        src="/static/38b9cac3b348dacabec84e6a03045e0c/37523/reservation_step.png"
+        srcset="/static/38b9cac3b348dacabec84e6a03045e0c/e9ff0/reservation_step.png 180w,
+/static/38b9cac3b348dacabec84e6a03045e0c/f21e7/reservation_step.png 360w,
+/static/38b9cac3b348dacabec84e6a03045e0c/37523/reservation_step.png 720w,
+/static/38b9cac3b348dacabec84e6a03045e0c/302a4/reservation_step.png 1080w,
+/static/38b9cac3b348dacabec84e6a03045e0c/07a9c/reservation_step.png 1440w,
+/static/38b9cac3b348dacabec84e6a03045e0c/4ea1e/reservation_step.png 2667w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>여러번의 삽질 결과, 예약 신청 페이지에 방문한 정보를 서버에 기록만 해주면 돼서, 예약 신청 페이지 접근을 위한 http 통신을 한번 더 진행하게 됐다.<br></p>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 45.55555555555556%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABMElEQVQoz52RvY+CQBDF+f8LQkNDRUVJY09NLCwsFQVU5NOAUVBAfOZNguFyR3OTvLCz7Lz5za5SVRXO57MoiiKcTiccj0fJueYec665V5YliqIQvd/vX1LyPP8WhWGI/X6PIAgk3+128H0fnufJP+4RgKLhX6HUdS2GPJBlGS6Xi4h7LEySBGyapqnk6/UamqZB13WoqgrbtnG/36X++XxCGRMevl6v8uVYFGMYBrxeL/R9/9Xj8RA1TYO2bX+O3HWdUHA0UnA0jrzZbGCaJgzDEFmWJaRsSrO5UEhAGprGcSwaR6Yxm/Ax2Ig0BKAYI9V0rRCbBSSkGQvHh3AcB4vFAsvlUqhut5vc02gwS8jHoNHhcJAvabfbLVzXFa1WKxmV9z01nBJ+DfGPmKOj4QeD8aa1/ViT7QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="reservation step"
+        title="reservation step"
+        src="/static/d041c50d851c65f6d1a5b1bf59cc6c68/37523/reservation_step_result.png"
+        srcset="/static/d041c50d851c65f6d1a5b1bf59cc6c68/e9ff0/reservation_step_result.png 180w,
+/static/d041c50d851c65f6d1a5b1bf59cc6c68/f21e7/reservation_step_result.png 360w,
+/static/d041c50d851c65f6d1a5b1bf59cc6c68/37523/reservation_step_result.png 720w,
+/static/d041c50d851c65f6d1a5b1bf59cc6c68/302a4/reservation_step_result.png 1080w,
+/static/d041c50d851c65f6d1a5b1bf59cc6c68/07a9c/reservation_step_result.png 1440w,
+/static/d041c50d851c65f6d1a5b1bf59cc6c68/191e2/reservation_step_result.png 1836w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>위 예약 신청 페이지에 대한 응답인데, 아마 <code class="language-text">기존 등록된 예약에 대해 예약 신청</code>을 하는 등 예외처리를 위해 페이지 <code class="language-text">Trace를 추적</code>하는 것으로 판단된다.<br></p>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAB7CAAAewgFu0HU+AAABMUlEQVQoz32Sa5KCQAyEuf/F+OkVEIuSp7LImxlifSnjIribKmpg6HS6kwQiIo/HQ/I817NtWz2bptHHew9E1nXV0zknfd8rJj6fpa5rmaZJ5nlWTGCEaZpKFEUShqGcTicFjuP4JrKTu5+6Fu+c3g3DoEVklV9CKlAVMO+mygKgEaqbLCdficBvMUqI3CRJpCgKud1u+r0FbQm7rlOM2ed7WZYj4eVykev1qtbp41/BP3pLeOe1NZCagA+FVOY0+zx+nmR6vRvhViHqDpbpQxzHcr/f9RIgSTTcz/MHIWqqqlIcvXav4RwsYzXLMm36f4FCbBKow/6BkOpYhZTq+6rfhmJOaM92G94KbSBMGuskoXa/2NyVZfkeCm2B1NYnMDCJ+/37tock2haAtwHaqj0B2fhbPna8azQAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="reservation apply"
+        title="reservation apply"
+        src="/static/ba9f0aff46bde840be381c5167c8963b/37523/reservation_apply.png"
+        srcset="/static/ba9f0aff46bde840be381c5167c8963b/e9ff0/reservation_apply.png 180w,
+/static/ba9f0aff46bde840be381c5167c8963b/f21e7/reservation_apply.png 360w,
+/static/ba9f0aff46bde840be381c5167c8963b/37523/reservation_apply.png 720w,
+/static/ba9f0aff46bde840be381c5167c8963b/302a4/reservation_apply.png 1080w,
+/static/ba9f0aff46bde840be381c5167c8963b/07a9c/reservation_apply.png 1440w,
+/static/ba9f0aff46bde840be381c5167c8963b/4ea1e/reservation_apply.png 2667w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>예약 신청을 하기 위한 모든 절차가 끝났으니, 이제 예약을 진행하면 된다.<br>
+예약에 필요한 사용자 정보를 적절히 기입하면 예약이 성공하는데, 굉장히 많은 정보를 입력해야 한다.<br>
+직접 남양주시 예약 사이트에 방문해도 알 수 있지만, ”<strong>하나의 예약 신청</strong>“을 위한 <code class="language-text">Deps</code>가 엄청나고, 많은 데이터가 필요하다.<br></p>
+<blockquote>
+<p>사실 이런 복잡함을 해결하고자 서비스를 제작하게 됐다.</p>
+</blockquote>
+<br>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAB7CAAAewgFu0HU+AAAA50lEQVQoz6WRTWqDQBSA5waSRW1oSo/hIdwGsqqQQI9RT+IqhYTo1nt4iZTxByz4lJlxLO+FxMRWkjTSfNv3vvfLiKgsyzRNAaA8AQCISER4gK7AiEhK+dVHCEEDYG35izFElHuE1rr5RU+OosjzvPVqFQTBxt/4vh+GYZuUJMl2+9lNlOd5t9FRfnddwxg9T17Gj0/mw5gxZpomABBRXddKqab57tpqrXvycvkxnc4WizfHmTuvc8uybNuWUv6x0Y+slOKcx3HMOc+yrCiKqqqEkO3kN66NSN1jbr7nwrXPGSr/m7vkHZUaZKBSALetAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="reservation result"
+        title="reservation result"
+        src="/static/063284fec0446b201b5d664024c46ba7/37523/reservation_end.png"
+        srcset="/static/063284fec0446b201b5d664024c46ba7/e9ff0/reservation_end.png 180w,
+/static/063284fec0446b201b5d664024c46ba7/f21e7/reservation_end.png 360w,
+/static/063284fec0446b201b5d664024c46ba7/37523/reservation_end.png 720w,
+/static/063284fec0446b201b5d664024c46ba7/302a4/reservation_end.png 1080w,
+/static/063284fec0446b201b5d664024c46ba7/07a9c/reservation_end.png 1440w,
+/static/063284fec0446b201b5d664024c46ba7/4ea1e/reservation_end.png 2667w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>정상적으로 예약이 됐다면, 휴대폰 문자로 알림이 갈 것이고<br>
+실패했다면, <code class="language-text">트랜잭션 재시도</code>를 시도하게 했다.<br></p>
+<blockquote>
+<p>그래도 지속적으로 실패한다면 5분 뒤 <code class="language-text">예약 실패</code>로 DB에 기록된다.</p>
+</blockquote>
+<br>
 <h2 id="-개발-방법" style="position:relative;"><a href="#-%EA%B0%9C%EB%B0%9C-%EB%B0%A9%EB%B2%95" aria-label=" 개발 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🧑‍💻 개발 방법</h2>
 <br>
 <p><span
@@ -547,6 +701,7 @@ N개의 예약들을 <code class="language-text">타겟이 되는 날짜를 기�
 <p><a href="#-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%A0%91%EA%B7%BC-%EB%B0%A9%EB%B2%95">👣 문제 해결을 위한 접근 방법</a></p>
 <ul>
 <li><a href="#-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%A7%84%ED%96%89%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-">❓ 프로세스 진행은 어떻게 ❓</a></li>
+<li><a href="#-%EB%B3%B5%EC%9E%A1%ED%95%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EB%A5%BC-%EA%B0%84%ED%8E%B8%ED%99%94%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EC%A0%84%EB%9E%B5">🤔 복잡한 프로세스를 간편화하기 위한 전략</a></li>
 </ul>
 </li>
 <li>
@@ -568,4 +723,4 @@ N개의 예약들을 <code class="language-text">타겟이 되는 날짜를 기�
 <p><a href="#-github-%EC%A3%BC%EC%86%8C">📚 Github 주소</a></p>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/skill/typeorm-virtual-column-2/"><div class="direction">이전 글</div><div class="title">Typeorm Virtual Column 설정 (2)</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/skill/nestjs-aop/"><div class="direction">다음 글</div><div class="title">NestJS Interceptor를 이용한 횡단 관심사 분리</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nfl1ryxditimo12">seongsu</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/project/reservation-automation/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5f5796b5cc7e557af05.js"],"app":["/app-911ec9c16aea38400af5.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0d19b91483ccbe548111.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a4d52df74927d7723f63.js"],"component---src-pages-about-js":["/component---src-pages-about-js-c6aba30b47fe5dc3af51.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d7d74f59dcc47f961428.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-433bdb880ac74c211239.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-561551115abc892160e3.js"]};/*]]>*/</script><script src="/polyfill-a5f5796b5cc7e557af05.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-433bdb880ac74c211239.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b35d36519d0e5047e72f.js" async=""></script><script src="/app-911ec9c16aea38400af5.js" async=""></script><script src="/framework-0ca52d9912f86fd0bfc4.js" async=""></script><script src="/webpack-runtime-f60261d854f301cdb723.js" async=""></script></body></html>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/skill/typeorm-virtual-column-2/"><div class="direction">이전 글</div><div class="title">Typeorm Virtual Column 설정 (2)</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/skill/socket/"><div class="direction">다음 글</div><div class="title">Socket이란 무엇인가 (Http Socket, Web Socket)</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/nfl1ryxditimo12">seongsu</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/project/reservation-automation/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5f5796b5cc7e557af05.js"],"app":["/app-911ec9c16aea38400af5.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0d19b91483ccbe548111.js"],"component---src-pages-404-js":["/component---src-pages-404-js-a4d52df74927d7723f63.js"],"component---src-pages-about-js":["/component---src-pages-about-js-c6aba30b47fe5dc3af51.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d7d74f59dcc47f961428.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-433bdb880ac74c211239.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-561551115abc892160e3.js"]};/*]]>*/</script><script src="/polyfill-a5f5796b5cc7e557af05.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-433bdb880ac74c211239.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-b35d36519d0e5047e72f.js" async=""></script><script src="/app-911ec9c16aea38400af5.js" async=""></script><script src="/framework-0ca52d9912f86fd0bfc4.js" async=""></script><script src="/webpack-runtime-f60261d854f301cdb723.js" async=""></script></body></html>
