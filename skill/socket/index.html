@@ -233,6 +233,9 @@ TCP/UDP 통신 위에 입혀진 HTTP는 <code class="language-text">Socket Conne
 <blockquote>
 <p>서버 소켓 설정에 따라 다르겠지만, Backlog Queue가 다 찬 경우, 새로운 Client의 연결 요청은 <a href="https://lwn.net/Articles/277146/">SYN Cookie</a>형식으로 대체된다고 한다.</p>
 </blockquote>
+<blockquote>
+<p><a href="https://blog.cloudflare.com/ko-kr/syn-packet-handling-in-the-wild-ko-kr/">여기</a>에서 <strong>SYN 패킷 처리 방법</strong>을 보는 것을 정말 추천한다. 설명이 너무 잘되어 있다.</p>
+</blockquote>
 <br>
 <h3 id="-client가-server에-연결되는-방법" style="position:relative;"><a href="#-client%EA%B0%80-server%EC%97%90-%EC%97%B0%EA%B2%B0%EB%90%98%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label=" client가 server에 연결되는 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🚪 Client가 Server에 연결되는 방법</h3>
 <br>
@@ -353,9 +356,8 @@ Server는 Socket으로 Binding된 fd를 통해 <a href="https://man7.org/linux/m
 <br>
 <p>Web Socket은 위 TCP 접속에 <a href="https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%A4%91%ED%86%B5%EC%8B%A0">전이중 통신</a>을 지원하는 통신 프로토콜이다.<br></p>
 <br>
-<p>Web Socket은 <code class="language-text">HTTP 폴링 과 같은 반이중 대안</code>보다 오버헤드가 낮은 웹 브라우저와 웹 서버 간의 상호 작용을 가능하게 하여 서버에서 <code class="language-text">실시간 데이터 전송</code>을 용이하게 한다.<br></p>
+<p>Web Socket은 <code class="language-text">HTTP 통신과 같은 반이중 방식</code>보다 오버헤드가 낮은 웹 브라우저와 웹 서버 간의 상호 작용을 가능하게 하여 서버에서 <code class="language-text">실시간 데이터 전송</code>을 용이하게 한다.<br></p>
 <p>이것은 Client와 Server간에 연결 수립을 하지 않고 <code class="language-text">Payload만 전송</code>할 수 있다는 것을 의미한다.<br></p>
-<br>
 <p>HTTP에서 억지로 양방향 통신을 구현한 것이고, <code class="language-text">Observer</code> 패턴과 비슷하다고 볼 수 있지만, 서로 <code class="language-text">Request</code>를 계속 보내는 형식이다.<br></p>
 <br>
 <h3 id="-web-socket-연결-수립-과정" style="position:relative;"><a href="#-web-socket-%EC%97%B0%EA%B2%B0-%EC%88%98%EB%A6%BD-%EA%B3%BC%EC%A0%95" aria-label=" web socket 연결 수립 과정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>🤝 Web Socket 연결 수립 과정</h3>
