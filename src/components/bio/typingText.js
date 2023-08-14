@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 const TypingText = ({ author }) => {
   const txt1 = '안녕하세요.';
-  const txt2 = '효율적으로 행동하는';
-  const txt3 = '개발자';
+  const txt2 = '한땀한땀 정성을 다하여';
+  const txt3 = '글쓰는';
   const txt4 = '입니다.';
   const [Text1, setText1] = useState('');
   const [Text2, setText2] = useState('');
@@ -59,7 +59,7 @@ const TypingText = ({ author }) => {
   });
 
   return (
-    <div style={{ width: '350px' }}>
+    <div style={{ width: '365px' }}>
       <p className="text title">
         {Text1}
         <br />
